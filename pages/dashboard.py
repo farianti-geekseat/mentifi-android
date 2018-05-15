@@ -9,4 +9,10 @@ import pytest
 
 
 class Dashboard(Page):
-    company = (By.XPATH,"//*[@contentDescription='Mentifi - Rapid Results ']")
+    con_mentee = (By.XPATH,"//*[@id='connectedCard']")
+    pend_mentee = (By.XPATH,"//*[@id='pendingCard']")
+    whatshap_mentee = (By.XPATH,"//*[@class='android.view.ViewGroup' and ./*[@id='appbar_layout']]")
+
+    con_mentor = (By.XPATH,"//*[@id='connectedCard']")
+    pend_mentor = (By.XPATH,"//*[@id='pendingCard']")
+    whatshap_mentor = (By.XPATH,"//*[@id='recycler_view']")
