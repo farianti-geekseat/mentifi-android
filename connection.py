@@ -4,8 +4,8 @@ class Connection():
 
     desired_caps = {}
     desired_caps['platformName'] = 'Android'
-    desired_caps['platformVersion'] = '5.0'
-    desired_caps['deviceName'] = 'Samsung'
+    desired_caps['platformVersion'] = '7.0'
+    desired_caps['deviceName'] = 'Meizu M6'
     desired_caps['udid'] = '420006e8ec161300'
     desired_caps['appPackage'] = "com.hub.mentifi"
     desired_caps['appActivity'] = ".activities.SplashActivity"
