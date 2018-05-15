@@ -13,4 +13,6 @@ class TestForgotPassword():
 
     def forgot_password(self):
         forgt_pass.click_forgot_password()
+        forgt_pass.fill_email_password()
+        forgt_pass.click_reset_link()
 
