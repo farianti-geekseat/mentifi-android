@@ -9,3 +9,6 @@ import pytest
 
 
 class ToDo(Page):
+    ongoing =(By.XPATH,"//*[@class='android.support.v7.app.ActionBar$Tab' and ./*[@text='Ongoing']]")
+    complete =(By.XPATH,"//*[@class='android.support.v7.app.ActionBar$Tab' and ./*[@text='Complete']]")
+    taskname =(By.XPATH,"//*[@text='testing 2']")

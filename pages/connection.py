@@ -9,3 +9,8 @@ import pytest
 
 
 class Connection(Page):
+    connected =(By.XPATH,"//*[@text='Connected']")
+    pending =(By.XPATH,"//*[@text='Pending']")
+    request =(By.XPATH,"//*[@text='Request']")
+    search =(By.XPATH,"//*[@id='search_button' and @width>0]")
+    view_connect = (By.XPATH,"//*[@id='recycler_view' and @width>0]")

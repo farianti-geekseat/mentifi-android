@@ -9,3 +9,6 @@ import pytest
 
 
 class Goal(Page):
+    goaltitle = (By.XPATH,"//*[@id='GoalTitle']")
+    progress = (By.XPATH,"//*[@id='progressText']")
+    chart = (By.XPATH,"//*[@id='chart']")
