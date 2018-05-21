@@ -6,9 +6,9 @@ class Connection():
     desired_caps['platformName'] = 'Android'
     desired_caps['platformVersion'] = '7.0'
     desired_caps['deviceName'] = 'Meizu M6'
-    desired_caps['udid'] = '54.206.115.140:5037'
+    desired_caps['udid'] = '711H2BSH223RU'
     desired_caps['appPackage'] = "com.hub.mentifi"
-    desired_caps['appActivity'] = "ui.login.LoginActivity"
+    desired_caps['appActivity'] = ".ui.login.LoginActivity"
     desired_caps['noReset'] = False
     desired_caps['automationName'] = 'uiautomator2'
     #desired_caps['appiumVersion'] = '1.6.5'
