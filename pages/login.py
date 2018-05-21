@@ -14,7 +14,8 @@ class Login(Page):
     password_id = (By.ID, 'com.hub.mentifi:id/input_password')
     sign_in_button = (By.ID, 'com.hub.mentifi:id/btn_login')
     forgot_password = (By.ID, "com.hub.mentifi:id/text_forgot")
-
+    invalid_user_pass = (By.XPATH,"//*[@text='OK']")
+    error_notif = (By.XPATH,"//*[@text='Max login attempt reached, please wait 3 seconds']")
 
     def __init__(self):
         super().__init__()
@@ -26,6 +27,13 @@ class Login(Page):
             self.find_element(self.password_id)
         except NoSuchElementException:
             pytest.fail("Element fail")
+
+    def invalid_userpass(self):
+        self.find_element(self.invalid_user_pass).click()
+
+    def error_message(self):
+        a = self.find_element(self.error_notif).text()
+        print(a)
 
     def login(self, email, password):
         self.driver.launch_app()
