@@ -16,7 +16,7 @@ class Login(Page):
     forgot_password = (By.ID, "com.hub.mentifi:id/text_forgot")
     invalid_user_pass = (By.XPATH,"//*[@text='OK']")
     error_notif = (By.XPATH,"//*[@text='Max login attempt reached, please wait 3 seconds']")
-
+    company = (By.XPATH,"//*[@class='android.widget.LinearLayout' and ./*[@text='Yogie basuki']]")
     def __init__(self):
         super().__init__()
 
@@ -85,3 +85,10 @@ class Login(Page):
         positions.append((x + width - 10, y))
         print(positions)
         self.driver.tap(positions)
+
+    def select_company(self):
+        try:
+            WebDriverWait(self.driver, 10).until(ec.presence_of_element_located(self.company))
+        except TimeoutException:
+            print("element not ready")
+        self.find_element(self.company).click()
