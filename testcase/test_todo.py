@@ -1,4 +1,5 @@
 import sys
+import time
 import os
 import pytest
 from pathlib import Path
@@ -24,5 +25,6 @@ class TestToDo():
         login.tap_sign_in()
         login.select_company()
         todo.click_todo()
+        time.sleep(3)
         todo.click_ongoing()
-        todo.click_complete()
+        #todo.click_complete()

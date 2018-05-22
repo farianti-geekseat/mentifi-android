@@ -53,6 +53,7 @@ class Login(Page):
             print("element not ready")
         email_el = self.find_element(self.username_id)
         email_el.send_keys(email)
+        print(email)
 
     def input_password(self, password):
         try:
@@ -61,10 +62,11 @@ class Login(Page):
             print("element not ready")
         password_el = self.find_element(self.password_id)
         password_el.send_keys(password)
+        print(password)
 
     def tap_sign_in(self):
         self.find_element(self.sign_in_button).click()
-
+        print("sign in button has been click")
     def is_login_success(self):
         pass
 

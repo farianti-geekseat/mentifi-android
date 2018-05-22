@@ -19,6 +19,16 @@ class ToDo(Page):
 
     def click_ongoing(self):
         self.find_element(self.ongoing).click()
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/list')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.TextView')
+        for i in test:
+            j = i.text
+            print(j)
 
     def click_complete(self):
         self.find_element(self.complete).click()
+        #test_parent = self.driver.find_element(By.ID,'com.hub.mentifi:id/list')
+        #test = test_parent.find_elements(By.CLASS_NAME,'android.widget.LinearLayout')
+        #for i in test:
+        #    text = i.text
+        #    print(text)

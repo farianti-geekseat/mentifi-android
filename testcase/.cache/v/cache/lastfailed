@@ -5,5 +5,6 @@
   "test_goal.py::TestGoal": true,
   "test_login.py": true,
   "test_login.py::TestLogin::()": true,
+  "test_todo.py": true,
   "test_todo.py::TestToDo": true
 }
