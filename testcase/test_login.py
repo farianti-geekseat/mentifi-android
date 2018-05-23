@@ -23,20 +23,6 @@ logout = pages.Logout()
 #@pytest.mark.usefixtures("reset_app")
 class TestLogin():
 
-    def test_invalid_login3x(self):
-        login.verified_all_element()
-        login.input_email("gamns08+yogya2@gmail.com")
-        login.input_password("ZXas12")
-        login.tap_sign_in()
-        login.invalid_userpass()
-        login.tap_sign_in()
-        login.invalid_userpass()
-        login.tap_sign_in()
-        login.invalid_userpass()
-        logout.logout()
-        #login.error_message()
-        #login.verify_login_is_failed()
-
     def test_multiple_account_login(self):
         login.verified_all_element()
         login.input_email("gamns08+yogya2@gmail.com")
@@ -57,7 +43,20 @@ class TestLogin():
         login.input_email("gamns04+menti1@gmail")
         login.input_password("ZXqw12")
         login.tap_sign_in()
-        logout.logout()
+        driver.quit()
 
+    def test_invalid_login3x(self):
+        login.verified_all_element()
+        login.input_email("gamns08+yogya2@gmail.com")
+        login.input_password("ZXas12")
+        login.tap_sign_in()
+        login.invalid_userpass()
+        login.tap_sign_in()
+        login.invalid_userpass()
+        login.tap_sign_in()
+        login.invalid_userpass()
+        driver.quit()
+        #login.error_message()
+        #login.verify_login_is_failed()
 # buat case untuk invalid login 3x + verify countdown
 # buat case untuk user yang single & multiple account
