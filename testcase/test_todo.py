@@ -27,4 +27,4 @@ class TestToDo():
         todo.click_todo()
         time.sleep(3)
         todo.click_ongoing()
-        #todo.click_complete()
+        todo.click_complete()
