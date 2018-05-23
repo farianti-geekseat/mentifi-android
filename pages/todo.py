@@ -19,7 +19,8 @@ class ToDo(Page):
 
     def click_ongoing(self):
         self.find_element(self.ongoing).click()
-        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/list')
+        print("List todo ongoing: ")
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/viewpager')
         test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.TextView')
         for i in test:
             j = i.text
@@ -27,7 +28,8 @@ class ToDo(Page):
 
     def click_complete(self):
         self.find_element(self.complete).click()
-        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/list')
+        print("List todo complete : ")
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/viewpager')
         test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.TextView')
         for i in test:
             k = i.text

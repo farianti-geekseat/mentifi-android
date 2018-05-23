@@ -22,12 +22,30 @@ class Connection(Page):
 
     def click_connected(self):
         self.find_element(self.connected).click()
+        print("List connected: ")
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/viewpager')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.TextView')
+        for i in test:
+            l = i.text
+            print(l)
 
     def click_pending(self):
         self.find_element(self.pending).click()
+        print("List pending: ")
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/viewpager')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.TextView')
+        for i in test:
+            m = i.text
+            print(m)
 
     def click_request(self):
         self.find_element(self.request).click()
+        print("List request: ")
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/viewpager')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.TextView')
+        for i in test:
+            n = i.text
+            print(n)
 
     def click_search(self):
         self.find_element(self.search).click()

@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from appium import webdriver
 import pytest
-from page.base_page import Page
+from pages import Page
 
 
 class AddConnection(Page):
