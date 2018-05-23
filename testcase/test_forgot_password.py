@@ -22,4 +22,4 @@ class TestFPass():
         forgt_pass.click_forgot_password()
         forgt_pass.fill_email_password("gamns08+yogya2@gmail.com")
         forgt_pass.click_reset_link()
-
+        # bisa ditambah verify muncul success message

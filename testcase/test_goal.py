@@ -24,3 +24,4 @@ class TestGoal():
         login.tap_sign_in()
         login.select_company()
         goal.click_goal()
+
