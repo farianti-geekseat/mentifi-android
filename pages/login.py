@@ -15,7 +15,7 @@ class Login(Page):
     sign_in_button = (By.ID, 'com.hub.mentifi:id/btn_login')
     forgot_password = (By.ID, "com.hub.mentifi:id/text_forgot")
     invalid_user_pass = (By.XPATH,"//*[@text='OK']")
-    error_notif = (By.XPATH,"//*[@text='Max login attempt reached, please wait 3 seconds']")
+    error_notif = (By.ID,"com.hub.mentifi:id/text_attempt_login")
     company = (By.XPATH,"//*[@class='android.widget.LinearLayout' and ./*[@text='Yogie basuki']]")
     def __init__(self):
         super().__init__()
@@ -30,10 +30,11 @@ class Login(Page):
 
     def invalid_userpass(self):
         self.find_element(self.invalid_user_pass).click()
+        print('Invalid User and Password')
 
     def error_message(self):
-        a = self.find_element(self.error_notif).text()
-        print(a)
+        a = self.find_element(self.error_notif)
+        print(a.text)
 
     def login(self, email, password):
         self.driver.launch_app()

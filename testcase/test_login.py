@@ -6,6 +6,7 @@ root = Path(__file__).parents[1]   #get the root directory
 root_model = str(root)
 sys.path.append(root_model)
 import pages
+import time
 from connection import Connection
 
 directory = '%s/' % os.getcwd()
@@ -23,27 +24,24 @@ logout = pages.Logout()
 #@pytest.mark.usefixtures("reset_app")
 class TestLogin():
 
-    def test_multiple_account_login(self):
-        login.verified_all_element()
-        login.input_email("gamns08+yogya2@gmail.com")
-        login.input_password("ZXasqw12")
-        login.tap_sign_in()
-        login.select_company()
-        logout.logout()
 
     def test_single_login(self):
         login.verified_all_element()
         login.input_email("gamns04+menti1@gmail.com")
         login.input_password("ZXasqw12")
         login.tap_sign_in()
-        logout.logout()
+        time.sleep(5)
+        logout.logout(1)
+        time.sleep(5)
 
-    def test_invalid_login(self):
+    def test_multiple_account_login(self):
         login.verified_all_element()
-        login.input_email("gamns04+menti1@gmail")
-        login.input_password("ZXqw12")
+        login.input_email("gamns08+yogya2@gmail.com")
+        login.input_password("ZXasqw12")
         login.tap_sign_in()
-        driver.quit()
+        login.select_company()
+        logout.logout(2)
+        time.sleep(5)
 
     def test_invalid_login3x(self):
         login.verified_all_element()
@@ -55,6 +53,17 @@ class TestLogin():
         login.invalid_userpass()
         login.tap_sign_in()
         login.invalid_userpass()
+        login.error_message()
+        print('test_invalid_login3x')
+        time.sleep(15)
+
+    def test_invalid_login(self):
+        login.verified_all_element()
+        login.input_email("gamns04+menti1@gmail")
+        login.input_password("ZXqw12")
+        login.tap_sign_in()
+        login.invalid_userpass()
+        print('test_invalid_login')
         driver.quit()
         #login.error_message()
         #login.verify_login_is_failed()
