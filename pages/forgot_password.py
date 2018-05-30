@@ -29,9 +29,10 @@ class Forgot_Password(Page):
             print("element not ready")
         email_for = self.find_element(self.email_forgot_pass)
         email_for.send_keys(femail)
-        print('verify email has been send to : '+femail)
 
-    def click_reset_link(self):
+
+    def click_reset_link(self,femail):
         self.find_element(self.send_reset_link).click()
         time.sleep(5)
         self.find_element(self.success_click).click()
+        print('verify email has been send to : ' + femail)

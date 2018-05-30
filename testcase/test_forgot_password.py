@@ -17,9 +17,10 @@ login = pages.Login()
 
 class TestFPass():
 
+    femail = "gamns08+yogya2@gmail.com"
     def test_forgot_password(self):
         login.verified_all_element()
         forgt_pass.click_forgot_password()
-        forgt_pass.fill_email_password("gamns08+yogya2@gmail.com")
-        forgt_pass.click_reset_link()
+        forgt_pass.fill_email_password(self.femail)
+        forgt_pass.click_reset_link(self.femail)
         # bisa ditambah verify muncul success message

@@ -19,7 +19,10 @@ logout = pages.Logout()
 #navbar = page.Navbar(driver)
 #feature_menu = pages.Feature(driver)
 #user_profile = pages.UserProfile(driver)
-
+password = 'ZXasqw12'
+wpass = 'ZXas12'
+single_id = "gamns04+menti1@gmail.com"
+multi_id = "gamns08+yogya2@gmail.com"
 
 #@pytest.mark.usefixtures("reset_app")
 class TestLogin():
@@ -27,26 +30,28 @@ class TestLogin():
 
     def test_single_login(self):
         login.verified_all_element()
-        login.input_email("gamns04+menti1@gmail.com")
-        login.input_password("ZXasqw12")
+        login.input_email(single_id)
+        login.input_password(password)
         login.tap_sign_in()
+        print('Successfully login')
         time.sleep(5)
         logout.logout(1)
         time.sleep(5)
 
     def test_multiple_account_login(self):
         login.verified_all_element()
-        login.input_email("gamns08+yogya2@gmail.com")
-        login.input_password("ZXasqw12")
+        login.input_email(multi_id)
+        login.input_password(password)
         login.tap_sign_in()
         login.select_company()
+        print('Successfully login multiple account')
         logout.logout(2)
         time.sleep(5)
 
     def test_invalid_login3x(self):
         login.verified_all_element()
-        login.input_email("gamns08+yogya2@gmail.com")
-        login.input_password("ZXas12")
+        login.input_email(multi_id)
+        login.input_password(wpass)
         login.tap_sign_in()
         login.invalid_userpass()
         login.tap_sign_in()
@@ -59,8 +64,8 @@ class TestLogin():
 
     def test_invalid_login(self):
         login.verified_all_element()
-        login.input_email("gamns04+menti1@gmail")
-        login.input_password("ZXqw12")
+        login.input_email(single_id)
+        login.input_password(wpass)
         login.tap_sign_in()
         login.invalid_userpass()
         print('test_invalid_login')
