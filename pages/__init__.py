@@ -5,6 +5,5 @@ from pages.goal import *
 from pages.todo import *
 from pages.register import *
 from pages.connection_dashboard import *
-from pages.dashboard import *
 from pages.logout import *
 from pages.switch_account import *
