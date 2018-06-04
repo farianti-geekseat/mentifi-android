@@ -32,15 +32,29 @@ class Dashboard(Page):
             print(z)
 
     def check_mentor_dashboard(self):
-        mentee_parent = self.find_element(self.con_mentee)
-        test = mentee_parent.find_elements(By.CLASS_NAME, 'android.widget.TextView')
+        mentor_parent = self.find_element(self.con_mentor)
+        test = mentor_parent.find_elements(By.CLASS_NAME, 'android.widget.TextView')
         for i in test:
             j = i.text
             print(j)
 
     def check_mentor_pen_dashboard(self):
-        mentee_parent = self.find_element(self.pend_mentee)
-        test = mentee_parent.find_elements(By.CLASS_NAME, 'android.widget.TextView')
+        mentor_parent = self.find_element(self.pend_mentor)
+        test = mentor_parent.find_elements(By.CLASS_NAME, 'android.widget.TextView')
         for i in test:
             z = i.text
             print(z)
+
+    def check_mentor_whatshap(self):
+        mentor_parent = self.find_element(self.whatshap_mentor)
+        test = mentor_parent.find_elements(By.CLASS_NAME, 'android.widget.TextView')
+        for i in test:
+            j = i.text
+            print(j)
+
+    def check_mentee_whatshap(self):
+        mentee_parent = self.find_element(self.whatshap_mentee)
+        test = mentee_parent.find_elements(By.CLASS_NAME, 'android.widget.TextView')
+        for i in test:
+            j = i.text
+            print(j)

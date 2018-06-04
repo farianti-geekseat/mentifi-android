@@ -28,7 +28,6 @@ mentee = "gamns08+yogya2@gmail.com"
 #@pytest.mark.usefixtures("reset_app")
 class TestDashboard():
 
-
     def test_dashboard_mentor(self):
         login.verified_all_element()
         login.input_email(mentor)
@@ -38,6 +37,7 @@ class TestDashboard():
         print('Successfully login')
         dashboard.check_mentor_dashboard()
         dashboard.check_mentor_pen_dashboard()
+        dashboard.check_mentor_whatshap()
         logout.logout(1)
 
     def test_dashboard_mentee(self):
@@ -45,9 +45,12 @@ class TestDashboard():
         login.input_email(mentee)
         login.input_password(password)
         login.tap_sign_in()
+        #time.sleep(2)
         login.select_company()
         time.sleep(5)
         print('Successfully login')
         dashboard.check_mentee_dashboard()
         dashboard.check_mentee_pen_dashboard()
+        dashboard.check_mentee_whatshap()
         logout.logout(2)
+
