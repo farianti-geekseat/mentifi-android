@@ -89,9 +89,11 @@ class Login(Page):
         print(positions)
         self.driver.tap(positions)
 
-    def select_company(self):
+    def select_company(self,alias):
         try:
             WebDriverWait(self.driver, 10).until(ec.presence_of_element_located(self.company))
         except TimeoutException:
             print("element not ready")
-        self.find_element(self.company).click()
+        profile_parent = self.driver.find_element(By.XPATH, "//*[@class='android.support.v7.widget.RecyclerView']")
+        profiles = profile_parent.find_elements(By.CLASS_NAME, 'android.widget.LinearLayout')
+        profiles[alias].click()
