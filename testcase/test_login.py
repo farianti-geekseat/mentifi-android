@@ -28,49 +28,50 @@ multi_id = "gamns08+yogya2@gmail.com"
 class TestLogin():
 
 
-    def test_single_login(self):
-        login.verified_all_element()
-        login.input_email(single_id)
-        login.input_password(password)
-        login.tap_sign_in()
-        print('Successfully login')
-        time.sleep(5)
-        logout.logout(1)
-        time.sleep(5)
+    # def test_single_login(self):
+    #     login.verified_all_element()
+    #     login.input_email(single_id)
+    #     login.input_password(password)
+    #     login.tap_sign_in()
+    #     print('Successfully login')
+    #     time.sleep(5)
+    #     logout.logout(1)
+    #     time.sleep(5)
 
     def test_multiple_account_login(self):
         login.verified_all_element()
         login.input_email(multi_id)
         login.input_password(password)
         login.tap_sign_in()
-        login.select_company()
+        time.sleep(2)
+        login.select_company(0)
         print('Successfully login multiple account')
         logout.logout(2)
         time.sleep(5)
 
-    def test_invalid_login3x(self):
-        login.verified_all_element()
-        login.input_email(multi_id)
-        login.input_password(wpass)
-        login.tap_sign_in()
-        login.invalid_userpass()
-        login.tap_sign_in()
-        login.invalid_userpass()
-        login.tap_sign_in()
-        login.invalid_userpass()
-        login.error_message()
-        print('test_invalid_login3x')
-        time.sleep(15)
-
-    def test_invalid_login(self):
-        login.verified_all_element()
-        login.input_email(single_id)
-        login.input_password(wpass)
-        login.tap_sign_in()
-        login.invalid_userpass()
-        print('test_invalid_login')
-        driver.quit()
-        #login.error_message()
-        #login.verify_login_is_failed()
+    # def test_invalid_login3x(self):
+    #     login.verified_all_element()
+    #     login.input_email(multi_id)
+    #     login.input_password(wpass)
+    #     login.tap_sign_in()
+    #     login.invalid_userpass()
+    #     login.tap_sign_in()
+    #     login.invalid_userpass()
+    #     login.tap_sign_in()
+    #     login.invalid_userpass()
+    #     login.error_message()
+    #     print('test_invalid_login3x')
+    #     time.sleep(15)
+    #
+    # def test_invalid_login(self):
+    #     login.verified_all_element()
+    #     login.input_email(single_id)
+    #     login.input_password(wpass)
+    #     login.tap_sign_in()
+    #     login.invalid_userpass()
+    #     print('test_invalid_login')
+    #     driver.quit()
+    #     #login.error_message()
+    #     #login.verify_login_is_failed()
 # buat case untuk invalid login 3x + verify countdown
 # buat case untuk user yang single & multiple account
