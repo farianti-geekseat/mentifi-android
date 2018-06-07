@@ -15,16 +15,20 @@ driver = Connection.driver
 
 todo = pages.ToDo()
 login = pages.Login()
+logout = pages.Logout()
 
 class TestToDo():
 
     def test_todo(self):
         login.verified_all_element()
-        login.input_email("gamns08+yogya2@gmail.com")
+        login.input_email("gamns08+yogya3@gmail.com")
         login.input_password("ZXasqw12")
         login.tap_sign_in()
-        login.select_company()
+        login.select_company(0)
         todo.click_todo()
-        time.sleep(3)
+        time.sleep(2)
         todo.click_ongoing()
-        todo.click_complete()
+        time.sleep(2)
+        todo.edit_todo(0,'automate todo')
+        #todo.click_complete()
+        #logout.logout()
