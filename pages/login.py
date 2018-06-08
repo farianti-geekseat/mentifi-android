@@ -16,7 +16,7 @@ class Login(Page):
     forgot_password = (By.ID, "com.hub.mentifi:id/text_forgot")
     invalid_user_pass = (By.XPATH,"//*[@text='OK']")
     error_notif = (By.ID,"com.hub.mentifi:id/text_attempt_login")
-
+    company = (By.ID, 'com.hub.mentifi:id/list')
     def __init__(self):
         super().__init__()
 
@@ -94,6 +94,6 @@ class Login(Page):
             WebDriverWait(self.driver, 10).until(ec.presence_of_element_located(self.company))
         except TimeoutException:
             print("element not ready")
-        profile_parent = self.driver.find_element(By.XPATH, "//*[@class='android.support.v7.widget.RecyclerView']")
+        profile_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/list')
         profiles = profile_parent.find_elements(By.CLASS_NAME, 'android.widget.LinearLayout')
         profiles[alias].click()

@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from appium.webdriver.common.touch_action import TouchAction
 from pages import Page
 
 import time
@@ -60,19 +61,29 @@ class ToDo(Page):
         time.sleep(1)
         tests[2].click()
         self.find_element(self.assign).click()
-        todo_parent = self.driver.find_element(By.ID,'android:id/content')
+        time.sleep(1)
+        todo_parent = self.driver.find_element(By.XPATH,"//*[@class='android.widget.FrameLayout']")
         todo_assign = todo_parent.find_elements(By.CLASS_NAME,'android.widget.CheckedTextView')
         todo_assign[2].click()
         self.find_element(self.tag_goal).click()
-        self.find_element(self.tag_goal).send_keys('a')
-        todo_parent = self.driver.find_element(By.XPATH,"//*[@class='android.widget.FrameLayout']")
-        todo_assign = todo_parent.find_elements(By.CLASS_NAME, 'android.widget.TextView')
-        todo_assign[1].click()
-        self.find_element(self.save).click()
+        self.find_element(self.tag_goal).send_keys('set')
+        time.sleep(2)
 
-#android:id/contentPanel
-    #android:id/parentPanel
-    #android:id/content
+        # TouchAction().tap(element=None,x=[60,334],y=[180,360],int=1)
+        #Page.tap_first_result_auto_complete(self.find_element(self.tag_goal))
+        # todo_parent2 = self.driver.find_element(By.XPATH,"//*[@class='android.widget.ListView']]")
+        # todo_assign2 = todo_parent2.find_elements(By.CLASS_NAME,'android.widget.TextView')
+        # for i in todo_assign2:
+        #     k = i.text
+        #     print(k)
+        #todo_assign2[1].click()
+        #self.find_element(self.save).click()
+
+#com.hub.mentifi:id/text_title
+    #//*[@class='android.widget.ListView']
+    #android.widget.RelativeLayout
+    #[60,334][180,360], [60,470][161,496]
+    #[60,402][180,428]
 
 
     def delete_todo(self,alias,title):

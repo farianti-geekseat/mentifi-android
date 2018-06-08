@@ -25,6 +25,6 @@ class TestSwitch():
         login.input_email(multi_id)
         login.input_password(password)
         login.tap_sign_in()
-        login.select_company()
+        login.select_company(0)
         switch.switch_account(2)
         print('Successfully switch account')
