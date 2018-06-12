@@ -70,3 +70,4 @@ class Goal(Page):
         test[2].click()
         self.find_element(self.ok_button).click()
         print('goal removed')
+
