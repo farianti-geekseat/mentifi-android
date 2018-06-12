@@ -13,9 +13,9 @@ class Goal(Page):
     progress = (By.XPATH,"//*[@id='progressText']")
     chart = (By.XPATH,"//*[@id='chart']")
     goal=(By.ID,'com.hub.mentifi:id/tab_goals')
-    add_goal=(By.XPATH,"//*[@id='fab_new_goal']")
+    add_goal=(By.CLASS_NAME,'android.widget.FloatingActionButton')
     edit_button = (By.XPATH,"//*[@id='ib_action_more' and (./preceding-sibling::* | ./following-sibling::*)[@text='hard']]")
-    set_goal = (By.ID,'com.hub.mentifi:id/input_goal')
+    set_goal = (By.XPATH,"//*[@id='fab_new_goal']")
     probability = (By.ID,'com.hub.mentifi:id/spinner_probability')
     ok_button = (By.XPATH,"//*[@text='OK']")
     prob = (By.XPATH,"//*[@text='Impossible']")
@@ -53,12 +53,12 @@ class Goal(Page):
         # print(tests)
         a = self.find_element(By.ID,'android:id/text1')
         print(a)
-        # tests.click
+        #[693,1013][800,1136]
         self.find_element(self.save).click()
 #By.XPATH,"//*[@class='android.widget.FrameLayout']"
-#android.widget.ScrollView
-#android:id/text1 id,text1
-#//*[@class='android.widget.ListView']
+#android.widget.ImageButton
+#//*[@id='fab_new_goal']
+#com.hub.mentifi:id/fab_new_goal
     def remove_goal(self, alias):
         edit_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/recycler_view_goal')
         edit = edit_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
@@ -72,4 +72,15 @@ class Goal(Page):
         print('goal removed')
 
 
-    def add_goal(self):
+    def add_goal(self,title,alias):
+        print(self.add_goal)
+        self.driver.tap((693,1013),(800,1136),1)
+        #self.find_element(self.add_goal).click()
+        # time.sleep(2)
+        #
+        # self.find_element(self.set_goal).send_keys(title)
+        # self.find_element(self.probability).click()
+        # time.sleep(5)
+        # test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/spinner_probability')
+        # tests = test_parent.find_elements(By.XPATH,'android.widget.TextView')
+        # tests[alias].click()
