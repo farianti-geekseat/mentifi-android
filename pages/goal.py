@@ -71,3 +71,5 @@ class Goal(Page):
         self.find_element(self.ok_button).click()
         print('goal removed')
 
+
+    def add_goal(self):
