@@ -19,8 +19,12 @@ class Goal(Page):
     probability = (By.ID,'com.hub.mentifi:id/spinner_probability')
     ok_button = (By.XPATH,"//*[@text='OK']")
     prob = (By.XPATH,"//*[@text='Impossible']")
-    save = (By.XPATH,"//*[@text='Save']")
+    save = (By.ID,'com.hub.mentifi:id/btn_save')
     tag = (By.ID,'com.hub.mentifi:id/tags_edit')
+    tag_todo = (By.ID,'com.hub.mentifi:id/recycler_view_task')
+    done = (By.ID,'com.hub.mentifi:id/done')
+    cancel = (By.ID,'com.hub.mentifi:id/btn_cancel')
+    determine = (By.ID,'com.hub.mentifi:id/determinateBar')
     def click_goal(self):
         self.find_element(self.goal).click()
 
@@ -41,21 +45,25 @@ class Goal(Page):
         test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.LinearLayout')
         test[0].click()
         print('edit clicked')
-        try:
-            WebDriverWait(self.driver, 10).until(ec.presence_of_element_located(self.set_goal))
-        except TimeoutException:
-            print("element not ready")
-
         self.find_element(self.set_goal).clear()
         self.find_element(self.set_goal).send_keys(title)
         self.find_element(self.probability).click()
-        # test_parent = self.driver.find_element(By.ID,'com.hub.mentifi:id/spinner_probability')
-        # tests = test_parent.find_elements(By.XPATH,'android.widget.ListView')
-        # print(tests)
-        a = self.find_element(By.ID,'android:id/text1')
-        print(a)
+        time.sleep(2)
+        self.find_element(self.cancel).click()
         #[693,1013][800,1136]
         self.find_element(self.save).click()
+        time.sleep(2)
+        self.find_element(self.tag).click()
+        time.sleep(2)
+        test_tag_parent = self.find_element(self.tag_todo)
+        test_tag = test_tag_parent.find_elements(By.CLASS_NAME, 'android.widget.CheckBox')
+        test_tag[alias].click()
+        time.sleep(2)
+        self.find_element(self.done).click()
+        time.sleep(2)
+        print('successfully add tag')
+        self.find_element(self.save).click()
+        print('successfully edit goal')
 #By.XPATH,"//*[@class='android.widget.FrameLayout']"
 #android.widget.ImageButton
 #//*[@id='fab_new_goal']
@@ -79,13 +87,27 @@ class Goal(Page):
         tests.click()
         time.sleep(2)
         self.find_element(self.set_goal).send_keys(title)
-        #self.find_element(self.tag).click
         self.find_element(self.probability).click()
-        time.sleep(5)
-        #test_parent = self.driver.find_element(By.XPATH,"//*[@class='android.widget.FrameLayout' and ./*[@id='spinner_probability']]")
-        self.driver.tap([(42,567),(758,652)],1)
+        time.sleep(2)
+        self.find_element(self.cancel).click()
+        time.sleep(1)
+        self.find_element(self.tag).click()
+        time.sleep(1)
+        test_tag_parent = self.find_element(self.tag_todo)
+        test_tag = test_tag_parent.find_elements(By.CLASS_NAME,'android.widget.CheckBox')
+        test_tag[alias].click()
+        time.sleep(1)
+        self.find_element(self.done).click()
+        print('successfully add tag')
+        self.find_element(self.save).click()
+        print('successfully add goal')
+        # self.find_element(self.probability).click()
+        # time.sleep(2)
+        # test_parent = self.driver.find_element(By.XPATH,"//*[@class='android.widget.FrameLayout' and ./*[@id='spinner_probability']]")
+        # #self.driver.tap([(42,652),(758,737)],1)
         # test = self.driver.find_elements(By.ID, 'android:id/text1')
-        # return(test)
+        # print(test)
+
 #android.widget.TextView
 #//*[@class='android.widget.FrameLayout' and ./*[@id='spinner_probability']]
 #//*[@class='android.widget.FrameLayout']
