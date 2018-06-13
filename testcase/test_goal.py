@@ -29,9 +29,9 @@ class TestGoal():
         login.tap_sign_in()
         login.select_company(0)
         goal.click_goal()
-        time.sleep(3)
+        time.sleep(2)
         goal.add_goal('test goal1',2)
-        logout.logout(2)
+        #logout.logout(2)
 
     # def test_add_todo_mentor(self):
     #     login.verified_all_element()

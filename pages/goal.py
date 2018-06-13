@@ -13,13 +13,14 @@ class Goal(Page):
     progress = (By.XPATH,"//*[@id='progressText']")
     chart = (By.XPATH,"//*[@id='chart']")
     goal=(By.ID,'com.hub.mentifi:id/tab_goals')
-    add_goal=(By.CLASS_NAME,'android.widget.FloatingActionButton')
+    add_goal=(By.ID,'com.hub.mentifi:id/fab_new_goal')
     edit_button = (By.XPATH,"//*[@id='ib_action_more' and (./preceding-sibling::* | ./following-sibling::*)[@text='hard']]")
-    set_goal = (By.XPATH,"//*[@id='fab_new_goal']")
+    set_goal = (By.ID,'com.hub.mentifi:id/input_goal')
     probability = (By.ID,'com.hub.mentifi:id/spinner_probability')
     ok_button = (By.XPATH,"//*[@text='OK']")
     prob = (By.XPATH,"//*[@text='Impossible']")
     save = (By.XPATH,"//*[@text='Save']")
+    tag = (By.ID,'com.hub.mentifi:id/tags_edit')
     def click_goal(self):
         self.find_element(self.goal).click()
 
@@ -73,14 +74,25 @@ class Goal(Page):
 
 
     def add_goal(self,title,alias):
-        print(self.add_goal)
-        self.driver.tap((693,1013),(800,1136),1)
-        #self.find_element(self.add_goal).click()
-        # time.sleep(2)
-        #
-        # self.find_element(self.set_goal).send_keys(title)
-        # self.find_element(self.probability).click()
-        # time.sleep(5)
-        # test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/spinner_probability')
-        # tests = test_parent.find_elements(By.XPATH,'android.widget.TextView')
-        # tests[alias].click()
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/mainContainer')
+        tests = test_parent.find_element(By.ID, 'com.hub.mentifi:id/fab_new_goal')
+        tests.click()
+        time.sleep(2)
+        self.find_element(self.set_goal).send_keys(title)
+        #self.find_element(self.tag).click
+        self.find_element(self.probability).click()
+        time.sleep(5)
+        #test_parent = self.driver.find_element(By.XPATH,"//*[@class='android.widget.FrameLayout' and ./*[@id='spinner_probability']]")
+        self.driver.tap([(42,567),(758,652)],1)
+        # test = self.driver.find_elements(By.ID, 'android:id/text1')
+        # return(test)
+#android.widget.TextView
+#//*[@class='android.widget.FrameLayout' and ./*[@id='spinner_probability']]
+#//*[@class='android.widget.FrameLayout']
+#android:id/text1
+
+# [42,312][758,397]
+# [42,397][758,482]
+# [42,482][758,567]
+# [42,567][758,652]
+# [42,652][758,737]
