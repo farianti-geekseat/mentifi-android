@@ -16,7 +16,11 @@ class Login(Page):
     forgot_password = (By.ID, "com.hub.mentifi:id/text_forgot")
     invalid_user_pass = (By.XPATH,"//*[@text='OK']")
     error_notif = (By.ID,"com.hub.mentifi:id/text_attempt_login")
+<<<<<<< HEAD
     company = (By.ID, 'com.hub.mentifi:id/list')
+=======
+    company = (By.ID,'com.hub.mentifi:id/list')
+>>>>>>> feature/feature_goals
     def __init__(self):
         super().__init__()
 
