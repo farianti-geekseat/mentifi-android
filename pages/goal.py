@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from appium.webdriver.common.touch_action import TouchAction
 from pages import Page
 
 import time
@@ -24,7 +25,8 @@ class Goal(Page):
     tag_todo = (By.ID,'com.hub.mentifi:id/recycler_view_task')
     done = (By.ID,'com.hub.mentifi:id/done')
     cancel = (By.ID,'com.hub.mentifi:id/btn_cancel')
-    determine = (By.ID,'com.hub.mentifi:id/determinateBar')
+    reason = (By.ID,'com.hub.mentifi:id/input_reason')
+    progress = (By.ID,'com.hub.mentifi:id/input_progress')
     def click_goal(self):
         self.find_element(self.goal).click()
 
@@ -99,6 +101,7 @@ class Goal(Page):
         time.sleep(1)
         self.find_element(self.done).click()
         print('successfully add tag')
+        time.sleep(1)
         self.find_element(self.save).click()
         print('successfully add goal')
         # self.find_element(self.probability).click()
@@ -107,6 +110,23 @@ class Goal(Page):
         # #self.driver.tap([(42,652),(758,737)],1)
         # test = self.driver.find_elements(By.ID, 'android:id/text1')
         # print(test)
+    def add_progress(self,alias,reason):
+        edit_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/recycler_view_goal')
+        edit = edit_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
+        edit[alias].click()
+        time.sleep(1)
+        test_parent = self.driver.find_element(By.XPATH,"//*[@class='android.widget.FrameLayout' and ./*[@class='android.widget.ListView']]")
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.LinearLayout')
+        test[1].click()
+        time.sleep(2)
+        self.find_element(self.reason).send_keys(reason)
+        self.find_element(self.progress).click()
+        action = TouchAction(self)
+        action.press(x=30,y=230)#press(x=start_x, y=start_y)
+        action.wait(ms=1)#wait(ms=duration)
+        action.move_to(x=30,y=240)#.move_to(x=end_x, y=end_y)
+        action.release()   #.release()
+        self.find_element(self.save).click()
 
 #android.widget.TextView
 #//*[@class='android.widget.FrameLayout' and ./*[@id='spinner_probability']]

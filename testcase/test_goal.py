@@ -58,3 +58,15 @@ class TestGoal():
         goal.edit_goal(1,'set automation')
         time.sleep(1)
         logout.logout(2)
+
+    def test_add_progress(self):
+        login.verified_all_element()
+        login.input_email(email)
+        login.input_password(password)
+        login.tap_sign_in()
+        login.select_company(1)
+        goal.click_goal()
+        time.sleep(2)
+        goal.add_progress(2,'naufal jelek')
+        time.sleep(2)
+        logout.logout(2)
