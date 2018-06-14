@@ -22,8 +22,8 @@ logout = pages.Logout()
 #user_profile = pages.UserProfile(driver)
 password = 'ZXasqw12'
 wpass = 'ZXas12'
-mentor = "gamns04+menti1@gmail.com"
-mentee = "gamns08+yogya2@gmail.com"
+mentor = "gamns08+yogya2@gmail.com"
+mentee = "gamns08+yogya3@gmail.com"
 
 #@pytest.mark.usefixtures("reset_app")
 class TestDashboard():
@@ -33,12 +33,13 @@ class TestDashboard():
         login.input_email(mentor)
         login.input_password(password)
         login.tap_sign_in()
+        login.select_company(1)
         time.sleep(5)
         print('Successfully login')
         dashboard.check_mentor_dashboard()
         dashboard.check_mentor_pen_dashboard()
         dashboard.check_mentor_whatshap()
-        logout.logout(1)
+        logout.logout(2)
 
     def test_dashboard_mentee(self):
         login.verified_all_element()
@@ -46,7 +47,7 @@ class TestDashboard():
         login.input_password(password)
         login.tap_sign_in()
         #time.sleep(2)
-        login.select_company()
+        login.select_company(1)
         time.sleep(5)
         print('Successfully login')
         dashboard.check_mentee_dashboard()
