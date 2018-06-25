@@ -19,7 +19,10 @@ class Connection(Page):
     con_dash =(By.ID,'com.hub.mentifi:id/tab_network')
     list_profile = (By.ID,'com.hub.mentifi:id/recycler_view')
     yes_button = (By.ID,'com.hub.mentifi:id/btn_positive_accept')
-
+    ok_button = (By.ID,'com.hub.mentifi:id/btn_positive_accept')
+    reject_button =(By.ID,'com.hub.mentifi:id/btn_positive')
+    accepted_button = (By.ID,'com.hub.mentifi:id/ld_btn_confirm')
+    button_form = (By.XPATH,"//*[@class='android.widget.LinearLayout' and @width>0 and ./*[@text='Cancel']]")
     def click_connection(self):
         self.find_element(self.con_dash).click()
 
@@ -57,9 +60,10 @@ class Connection(Page):
         profile = self.driver.find_elements(By.ID, 'android:id/title')
         profile[0].click()
         time.sleep(5)
-        test_parent2 = self.driver.find_element(By.ID, 'com.hub.mentifi:id/layout_header')
-        test2 = self.driver.find_elements(By.CLASS_NAME, 'android.widget.TextView')
-        for i in test:
+        print('check view profile')
+        test_parent2 = self.driver.find_element(By.XPATH, "//*[@class='android.view.View']")
+        test2 = test_parent2.find_elements(By.CLASS_NAME, 'android.widget.TextView')
+        for i in test2:
             z = i.text
             print(z)
 
@@ -73,13 +77,16 @@ class Connection(Page):
         profile[0].click()
         time.sleep(5)
         # profile[0].click()
-        test_parent2 = self.driver.find_element(By.ID, 'com.hub.mentifi:id/layout_header')
-        test2 = self.driver.find_elements(By.CLASS_NAME, 'android.widget.TextView')
-        for i in test:
+        print('check pending profile :')
+        test_parent2 = self.driver.find_element(By.XPATH, "//*[@class='android.view.View']")
+        test2 = test_parent2.find_elements(By.CLASS_NAME, 'android.widget.TextView')
+        for i in test2:
             g = i.text
             print(g)
 #com.hub.mentifi:id/collapsing_toolbar
-    #com.hub.mentifi:id/layout_header
+    #//*[@class='android.widget.LinearLayout' and @width>0 and @height>0 and ./*[@id='text_profile_name_mentor']]
+    #//*[@class='android.view.View']
+    #//*[@class='android.widget.LinearLayout' and @width>0 and @height>0 and ./*[@class='android.widget.LinearLayout' and @height>0 and ./*[@text=' Jennifer Dunn']]]
     def pending_remove_connection(self,alias):
         test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/viewpager')
         test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
@@ -87,6 +94,41 @@ class Connection(Page):
         time.sleep(2)
         profile = self.driver.find_elements(By.ID, 'android:id/title')
         profile[2].click()
+        self.find_element(self.yes_button).click()
+        print('connection removed')
+
+    def request_accept(self,alias):
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/viewpager')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
+        test[alias].click()
+        time.sleep(2)
+        profile = self.driver.find_elements(By.ID, 'android:id/title')
+        profile[1].click()
+        time.sleep(1)
+        self.find_element(self.ok_button).click()
+        self.find_element(self.accepted_button).click()
+        print('request accepted')
+
+    def request_reject(self,alias):
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/viewpager')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
+        test[alias].click()
+        time.sleep(2)
+        profile = self.driver.find_elements(By.ID, 'android:id/title')
+        profile[2].click()
+        time.sleep(1)
+        self.find_element(self.reject_button).click()
+        self.find_element(self.accepted_button).click()
+        print('request rejected')
+
+    def request_remove_connection(self,alias):
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/viewpager')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
+        test[alias].click()
+        time.sleep(2)
+        profile = self.driver.find_elements(By.ID, 'android:id/title')
+        profile[4].click()
+        #self.find_element(self.reject_button).click()
         self.find_element(self.yes_button).click()
         print('connection removed')
 
