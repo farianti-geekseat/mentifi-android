@@ -22,7 +22,13 @@ class Connection(Page):
     ok_button = (By.ID,'com.hub.mentifi:id/btn_positive_accept')
     reject_button =(By.ID,'com.hub.mentifi:id/btn_positive')
     accepted_button = (By.ID,'com.hub.mentifi:id/ld_btn_confirm')
-    button_form = (By.XPATH,"//*[@class='android.widget.LinearLayout' and @width>0 and ./*[@text='Cancel']]")
+    add_button = (By.ID,'com.hub.mentifi:id/floating_action')
+    search_name =(By.ID,'com.hub.mentifi:id/search_name')
+    tag_edit = (By.ID,'com.hub.mentifi:id/tags_edit')
+    button_search = (By.ID,'com.hub.mentifi:id/button_search')
+    button_clear = (By.ID,'com.hub.mentifi:id/button_clear')
+    connect = (By.ID,'com.hub.mentifi:id/btn_positive')
+
     def click_connection(self):
         self.find_element(self.con_dash).click()
 
@@ -132,6 +138,24 @@ class Connection(Page):
         self.find_element(self.yes_button).click()
         print('connection removed')
 
-#android.widget.RelativeLayout
+    def add_mentor_connections(self,name,alias):
+        self.find_element(self.add_button).click()
+        time.sleep(2)
+        self.find_element(self.search_name).click()
+        self.find_element(self.search_name).send_keys(name)
+        time.sleep(1)
+        self.find_element(self.button_search).click()
+        time.sleep(5)
+        test_parent = self.driver.find_element(By.CLASS_NAME,'android.widget.RelativeLayout')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
+        test[0].click()
+        # time.sleep(3)
+        # test_parent3 = self.driver.find_element(By.XPATH, "//*[@class='android.widget.ListView']")
+        # test3 = test_parent3.find_elements(By.CLASS_NAME, 'android.widget.TextView')
+        # test[0].click()
+        #self.find_element(self.connect).click()
+#android.widget.ImageButton
+    #com.hub.mentifi:id/recycler_view
+    #//*[@class='android.widget.FrameLayout' and @height>0 and ./*[@class='android.widget.RelativeLayout' and ./*[@id='recycler_view']]]
     def click_search(self):
         self.find_element(self.search).click()
