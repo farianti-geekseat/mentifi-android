@@ -23,15 +23,15 @@ mentee = "gamns08+yogya3@gmail.com"
 
 class TestEditProfile():
 
-    # def test_edit_profile_mentee(self):
-    #     login.verified_all_element()
-    #     login.input_email(mentee)
-    #     login.input_password(password)
-    #     login.tap_sign_in()
-    #     login.select_company(0)
-    #     edit_profile.edit_personal_detail_mentee('Eremes','Gultom','EremGul',1,'0838214777')
-    #     time.sleep(2)
-    #     logout.logout(2)
+    def test_edit_profile_mentee(self):
+        login.verified_all_element()
+        login.input_email(mentee)
+        login.input_password(password)
+        login.tap_sign_in()
+        login.select_company(0)
+        edit_profile.edit_personal_detail_mentee('Eremes','Gultom','EremGul',1,'0838214343777')
+        time.sleep(2)
+        logout.logout(2)
     #
     # def test_edit_profile_mentor(self):
     #     login.verified_all_element()
@@ -63,22 +63,22 @@ class TestEditProfile():
     #         time.sleep(2)
     #         logout.logout(2)
 
-    def test_edit_education_mentee(self):
-            login.verified_all_element()
-            login.input_email(mentee)
-            login.input_password(password)
-            login.tap_sign_in()
-            login.select_company(0)
-            edit_profile.edit_education_mentee('Debt Collector','Artifact')
-            time.sleep(2)
-            logout.logout(2)
-
-    def test_edit_education_mentor(self):
-            login.verified_all_element()
-            login.input_email(mentor)
-            login.input_password(password)
-            login.tap_sign_in()
-            login.select_company(0)
-            edit_profile.edit_education_mentor('Full Timer','ITHB')
-            time.sleep(2)
-            logout.logout(2)
+    # def test_edit_education_mentee(self):
+    #         login.verified_all_element()
+    #         login.input_email(mentee)
+    #         login.input_password(password)
+    #         login.tap_sign_in()
+    #         login.select_company(0)
+    #         edit_profile.edit_education_mentee('Debt Collector','Artifact')
+    #         time.sleep(2)
+    #         logout.logout(2)
+    #
+    # def test_edit_education_mentor(self):
+    #         login.verified_all_element()
+    #         login.input_email(mentor)
+    #         login.input_password(password)
+    #         login.tap_sign_in()
+    #         login.select_company(0)
+    #         edit_profile.edit_education_mentor('Full Timer','ITHB')
+    #         time.sleep(2)
+    #         logout.logout(2)

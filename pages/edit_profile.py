@@ -4,6 +4,8 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from pages import Page
 import time
+import numpy
+
 
 import pytest
 
@@ -28,6 +30,10 @@ class Edit_Profile(Page):
     degree = (By.ID,'com.hub.mentifi:id/input_degree')
     major = (By.ID,'com.hub.mentifi:id/input_institution_hint')
     institution = (By.ID,'com.hub.mentifi:id/input_institution')
+    pic = (By.ID,'com.hub.mentifi:id/text_change_picture')
+    crop_ok = (By.ID,'com.hub.mentifi:id/menu_crop')
+
+#com.hub.mentifi:id/image_profile
 
 
     def edit_personal_detail_mentee(self,first,last,prefer,gender,tlp):
@@ -53,10 +59,28 @@ class Edit_Profile(Page):
         self.find_element(self.phone).clear()
         self.find_element(self.phone).send_keys(tlp)
         time.sleep(1)
-        self.driver.hide_keyboard()
+        self.find_element(self.pic).click()
         time.sleep(1)
-        self.find_element(self.save_button).click()
+        a = self.driver.find_element(By.ID,'com.asus.gallery:id/fab_root')
+        a.click()
+        time.sleep(2)
+        file_base64 = self.driver.pull_file('/sdcard/Pictures/1526805882240.jpg')
+        print(file_base64)
+        # b = self.driver.find_element(By.ID, 'com.asus.gallery:id/fab_root')
+        # b.click()
+        # time.sleep(3)
+        #self.find_element(self.crop_ok).click()
+        #self.driver.push_file('/path/to/device/foo.bar', 'QXJlIHlvdXIgYmVlcnMgb2theT8=')
+        #self.driver.push_file('/sdcard/Pictures/1526805882240.jpg')
+        # time.sleep(1)
+        #self.find_element(self.save_button).click()
         print('profile edited :'+first+','+last+','+prefer+','+tlp)
+#com.asus.gallery:id/gl_root_view
+    #com.asus.gallery:id/fab_root
+    #[0,0][792,1208]
+    #[0,0][800,1216]
+    #android.widget.RelativeLayout
+    #android.view.View
 
     def edit_biography_mentee(self, about, skill):
         self.find_element(self.more).click()
@@ -70,8 +94,8 @@ class Edit_Profile(Page):
         self.find_element(self.pro_skill).clear()
         self.find_element(self.pro_skill).send_keys(skill)
         self.find_element(self.save_button).click()
-        # time.sleep(1)
-        # self.driver.hide_keyboard()
+        time.sleep(1)
+        self.driver.hide_keyboard()
         time.sleep(1)
         print('profile bio edited :' + about + ',' + skill )
 
