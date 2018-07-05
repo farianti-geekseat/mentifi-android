@@ -23,15 +23,15 @@ mentee = "gamns08+yogya3@gmail.com"
 
 class TestEditProfile():
 
-    # def test_edit_profile_mentee(self):
-    #     login.verified_all_element()
-    #     login.input_email(mentee)
-    #     login.input_password(password)
-    #     login.tap_sign_in()
-    #     login.select_company(0)
-    #     edit_profile.edit_personal_detail_mentee('Eremes','Gultom','EremGult',0,'0838214343777')
-    #    time.sleep(2)
-    #    logout.logout(2)
+    def test_edit_profile_mentee(self):
+        login.verified_all_element()
+        login.input_email(mentee)
+        login.input_password(password)
+        login.tap_sign_in()
+        login.select_company(0)
+        edit_profile.edit_personal_detail_mentee('Eremes','Gultom','EG',0,'0838214377')
+        time.sleep(2)
+        logout.logout(2)
     #
     # def test_edit_profile_mentor(self):
     #     login.verified_all_element()
@@ -69,7 +69,7 @@ class TestEditProfile():
     #         login.input_password(password)
     #         login.tap_sign_in()
     #         login.select_company(0)
-    #         edit_profile.edit_education_mentee('Debt Collector','Artifact')
+    #         edit_profile.edit_education_mentee('Architect','Interior',1,1)
     #         time.sleep(2)
     #         logout.logout(2)
     #
@@ -79,7 +79,7 @@ class TestEditProfile():
     #         login.input_password(password)
     #         login.tap_sign_in()
     #         login.select_company(0)
-    #         edit_profile.edit_education_mentor('Full Timer','ITHB')
+    #         edit_profile.edit_education_mentor('Full Timer','ITHB','May 2018','September 2018')
     #         time.sleep(2)
     #         logout.logout(2)
 
@@ -94,15 +94,25 @@ class TestEditProfile():
     #     edit_profile.edit_current_experience_mentee('Soldier', 'Holy War', 'July 2018','December 2019')
     #     logout.logout(2)
 
-    def test_edit_profile_mentor(self):
-        login.verified_all_element()
-        login.input_email(mentor)
-        login.input_password(password)
-        login.tap_sign_in()
-        login.select_company(0)
-        edit_profile.edit_current_experience_mentor('Chef','Kitchen','u','February 2018')
-        time.sleep(2)
-        edit_profile.edit_previous_experience_mentor('Priest', 'Church', 'June 2018','October 2019')
-        time.sleep(3)
-        edit_profile.edit_non_work_experience_mentor(0,4)
-        logout.logout(2)
+    # def test_edit_profile_mentor(self):
+    #     login.verified_all_element()
+    #     login.input_email(mentor)
+    #     login.input_password(password)
+    #     login.tap_sign_in()
+    #     login.select_company(0)
+    #     edit_profile.edit_current_experience_mentor('Chef','Kitchen','u','February 2018')
+    #     time.sleep(2)
+    #     edit_profile.edit_previous_experience_mentor('Priest', 'Church', 'June 2018','October 2019')
+    #     time.sleep(3)
+    #     edit_profile.edit_non_work_experience_mentor(0,4)
+    #     logout.logout(2)
+
+    # def test_edit_mentor_preference(self):
+    #         login.verified_all_element()
+    #         login.input_email(mentor)
+    #         login.input_password(password)
+    #         login.tap_sign_in()
+    #         login.select_company(0)
+    #         edit_profile.edit_mentor_preference('a',1)
+    #         time.sleep(2)
+    #         logout.logout(2)

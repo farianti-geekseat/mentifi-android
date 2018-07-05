@@ -27,7 +27,7 @@ class Edit_Profile(Page):
     bio = (By.ID,'com.hub.mentifi:id/input_bio')
     hobby = (By.ID,'com.hub.mentifi:id/input_hobbies')
     degree = (By.ID,'com.hub.mentifi:id/input_degree')
-    major = (By.ID,'com.hub.mentifi:id/input_institution_hint')
+    major = (By.ID,'com.hub.mentifi:id/input_institution')
     institution = (By.ID,'com.hub.mentifi:id/input_institution')
     pic = (By.ID,'com.hub.mentifi:id/text_change_picture')
     crop_ok = (By.ID,'com.hub.mentifi:id/menu_crop')
@@ -39,6 +39,7 @@ class Edit_Profile(Page):
     upload_file = (By.ID,'com.hub.mentifi:id/input_upload_file')
     area = (By.ID,'com.hub.mentifi:id/tags_edit')
     other = (By.ID,'com.hub.mentifi:id/input_other')
+    edit_preferences = (By.ID,'com.hub.mentifi:id/action_edit')
 
 #com.hub.mentifi:id/image_profile
 
@@ -67,13 +68,13 @@ class Edit_Profile(Page):
         self.find_element(self.phone).clear()
         self.find_element(self.phone).send_keys(tlp)
         time.sleep(2)
-        # self.find_element(self.pic).click()
-        # self.find_element(self.allow).click()
-        # self.find_element(self.pic).click()
-        # time.sleep(2)
+        self.find_element(self.pic).click()
+        self.find_element(self.allow).click()
+        self.find_element(self.pic).click()
+        time.sleep(2)
         # self.driver.pull_file('/root/Internal storage/DCIM/Camera/20180705_090252.jpg')
         #self.driver.tap([(0,190),(520,300)])
-        # self.swipe_to_bottom()
+        self.swipe_to_bottom()
         # time.sleep(3)
         #a = self.driver.find_element_by_id('com.sec.android.gallery3d:id/main_relativelayout')
         #self.driver.switch_to_frame(self.driver.find_element_by_xpath("//*[@class='android.widget.FrameLayout' and ./*[@id='decor_content_parent']]"))
@@ -88,32 +89,20 @@ class Edit_Profile(Page):
         # self.driver.start_activity("com.hub.mentifi",
         #                            "com.hub.mentifi.ui.splash.SplashActivity")
         # self.driver.switch_to_window('com.sec.samsung.gallery.glview.composeView.PositionControllerBase$ThumbObject')
-        # b = self.driver.find_elements(By.CLASS_NAME,'com.sec.samsung.gallery.glview.composeView.PositionControllerBase$ThumbObject')
-        # print(b)
-        # time.sleep(1)
-        # self.driver.start_activity("com.sec.android.gallery3d", "app.GalleryOpaqueActivity")
-        #b[1].click()
+        self.driver.start_activity("com.sec.android.gallery3d",'id/gl_root_view')
         # time.sleep(2)
         # b = self.driver.find_element(By.ID, 'com.asus.gallery:id/fab_root')
         #print(b)
         #b.click()
         # time.sleep(3)
-        #self.find_element(self.crop_ok).click()
-        #self.driver.push_file('/path/to/device/foo.bar', 'QXJlIHlvdXIgYmVlcnMgb2theT8=')
-        #self.driver.push_file('/sdcard/Pictures/1526805882240.jpg')
         # time.sleep(1)
-        self.find_element(self.save_button).click()
+        # self.find_element(self.save_button).click()
         print('profile edited :'+first+','+last+','+prefer+','+tlp)
 #com.sec.android.gallery3d:id/gl_root_view
     #com.asus.gallery:id/fab_root
     #[395,347][684,636]
     #[0,0][792,1208]
     #[0,0][800,1216]
-    #//*[@class='android.widget.FrameLayout' and @width>0 and ./*[@class='android.widget.LinearLayout' and ./*[@class='android.widget.FrameLayout' and ./*[@id='decor_content_parent']]]]
-    #//*[@class='android.widget.FrameLayout' and @height>0 and ./*[@class='android.widget.LinearLayout' and ./*[@class='android.widget.FrameLayout' and ./*[@id='decor_content_parent']]]]
-    #//*[@class='android.widget.FrameLayout' and @height>0 and ./*[@id='decor_content_parent']]
-    #//*[@class='android.widget.FrameLayout' and ./*[@id='decor_content_parent']]
-    #//*[@class='android.widget.FrameLayout' and ./*[@id='decor_content_parent']]
 
     def edit_biography_mentee(self, about, skill):
         self.find_element(self.more).click()
@@ -132,7 +121,7 @@ class Edit_Profile(Page):
         time.sleep(1)
         print('profile bio edited :' + about + ',' + skill )
 
-    def edit_education_mentee(self, degree, major):
+    def edit_education_mentee(self, degree, major,grade,mode):
         self.find_element(self.more).click()
         self.find_element(self.profile).click()
         time.sleep(1)
@@ -148,6 +137,12 @@ class Edit_Profile(Page):
         self.find_element(self.major).clear()
         self.find_element(self.major).send_keys(major)
         time.sleep(1)
+        test_parent2 = self.driver.find_element(By.ID, 'com.hub.mentifi:id/input_grade')
+        test2 = test_parent2.find_elements(By.CLASS_NAME, 'android.widget.RadioButton')
+        test2[grade].click()
+        test_parent3 = self.driver.find_element(By.ID, 'com.hub.mentifi:id/input_mode')
+        test3 = test_parent3.find_elements(By.CLASS_NAME, 'android.widget.RadioButton')
+        test3[mode].click()
         self.find_element(self.save_button).click()
         # test_parent2 = self.driver.find_element(By.ID, 'com.hub.mentifi:id/recycler_view')
         # test2 = test_parent2.find_elements(By.CLASS_NAME, 'android.support.v7.app.ActionBar$Tab')
@@ -204,7 +199,7 @@ class Edit_Profile(Page):
         print('profile edited :'+first+','+last+','+work+','+tlp)
 
 
-    def edit_education_mentor(self, degree, institution):
+    def edit_education_mentor(self, degree, institution,start_date,end_date):
         self.find_element(self.more).click()
         self.find_element(self.profile).click()
         time.sleep(1)
@@ -220,6 +215,10 @@ class Edit_Profile(Page):
         self.find_element(self.institution).clear()
         self.find_element(self.institution).send_keys(institution)
         time.sleep(1)
+        self.find_element(self.start_date).clear()
+        self.find_element(self.start_date).send_keys(start_date)
+        self.find_element(self.end_date).clear()
+        self.find_element(self.end_date).send_keys(end_date)
         self.find_element(self.save_button).click()
 
     def edit_current_experience_mentee(self,job,employer,start_date):
@@ -245,7 +244,6 @@ class Edit_Profile(Page):
         #self.find_element(self.upload_file).click()
         self.find_element(self.save_button).click()
         print('previous experience mentee edited')
-
 
 
     def edit_previous_experience_mentee(self,job,employer,start_date,end_date):
@@ -291,7 +289,7 @@ class Edit_Profile(Page):
         self.find_element(self.area).click()
         self.find_element(self.area).send_keys(area)
         time.sleep(3)
-        self.find_element(self.employer).click()
+        self.tap_first_result_auto_complete(self.find_element(self.area))
         # test3 = self.driver.find_element(By.XPATH, "//*[@class='android.widget.FrameLayout' and ./*[@class='android.widget.ListView']]")
         # print(test3)
         #test3[0].click()
@@ -352,3 +350,32 @@ class Edit_Profile(Page):
         print('current experience mentor edited')
         #[65,1533][387,1574]
         #[65, 1187][246, 1228]
+
+    def edit_mentor_preference(self,area,prefer):
+        self.find_element(self.more).click()
+        self.find_element(self.profile).click()
+        time.sleep(1)
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/tabs')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.support.v7.app.ActionBar$Tab')
+        test[4].click()
+        time.sleep(2)
+        self.find_element(self.edit_preferences).click()
+        time.sleep(1)
+        self.find_element(self.area).click()
+        self.find_element(self.area).send_keys(area)
+        time.sleep(2)
+        # test_parent = self.driver.find_element(By.XPATH,"//*[@class='android.widget.ListView']")
+        # test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.TextView')
+        self.tap_first_result_auto_complete(self.find_element(self.area))
+        # test_parent2 = self.driver.find_element(By.ID, 'com.hub.mentifi:id/input_grade')
+        # test2 = test_parent2.find_elements(By.CLASS_NAME, 'android.widget.RadioButton')
+        # test2[prefer].click()
+        time.sleep(1)
+        test_parent2 = self.driver.find_element(By.ID, 'com.hub.mentifi:id/input_grade')
+        test2 = test_parent2.find_elements(By.CLASS_NAME, 'android.widget.RadioButton')
+        test2[prefer].click()
+        time.sleep(1)
+        #self.find_element(self.employer).clear()
+        #self.driver.hide_keyboard()
+        self.find_element(self.save_button).click()
+        print('current experience mentee edited')
