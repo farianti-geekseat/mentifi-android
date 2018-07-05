@@ -23,15 +23,15 @@ mentee = "gamns08+yogya3@gmail.com"
 
 class TestEditProfile():
 
-    def test_edit_profile_mentee(self):
-        login.verified_all_element()
-        login.input_email(mentee)
-        login.input_password(password)
-        login.tap_sign_in()
-        login.select_company(0)
-        edit_profile.edit_personal_detail_mentee('Eremes','Gultom','EremGul',1,'0838214343777')
-        time.sleep(2)
-        logout.logout(2)
+    # def test_edit_profile_mentee(self):
+    #     login.verified_all_element()
+    #     login.input_email(mentee)
+    #     login.input_password(password)
+    #     login.tap_sign_in()
+    #     login.select_company(0)
+    #     edit_profile.edit_personal_detail_mentee('Eremes','Gultom','EremGult',0,'0838214343777')
+    #    time.sleep(2)
+    #    logout.logout(2)
     #
     # def test_edit_profile_mentor(self):
     #     login.verified_all_element()
@@ -82,3 +82,25 @@ class TestEditProfile():
     #         edit_profile.edit_education_mentor('Full Timer','ITHB')
     #         time.sleep(2)
     #         logout.logout(2)
+
+    # def test_edit_profile_mentee(self):
+    #     login.verified_all_element()
+    #     login.input_email(mentee)
+    #     login.input_password(password)
+    #     login.tap_sign_in()
+    #     login.select_company(0)
+    #     edit_profile.edit_previous_experience_mentee('Fighter','WBA','January 2018')
+    #     time.sleep(2)
+    #     edit_profile.edit_current_experience_mentee('Crusader', 'Holy War', 'May 2018','December 2019')
+    #     logout.logout(2)
+
+    def test_edit_profile_mentor(self):
+        login.verified_all_element()
+        login.input_email(mentor)
+        login.input_password(password)
+        login.tap_sign_in()
+        login.select_company(0)
+        edit_profile.edit_previous_experience_mentor('Fighter','WBA','January 2018')
+        time.sleep(2)
+        edit_profile.edit_current_experience_mentor('Crusader', 'Holy War', 'May 2018','December 2019')
+        logout.logout(2)

@@ -3,9 +3,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from pages import Page
+from connection import Connection
 import time
-import numpy
-
 
 import pytest
 
@@ -32,6 +31,12 @@ class Edit_Profile(Page):
     institution = (By.ID,'com.hub.mentifi:id/input_institution')
     pic = (By.ID,'com.hub.mentifi:id/text_change_picture')
     crop_ok = (By.ID,'com.hub.mentifi:id/menu_crop')
+    allow = (By.ID,'com.android.packageinstaller:id/permission_allow_button')
+    job_title = (By.ID,'com.hub.mentifi:id/input_job_position')
+    employer = (By.ID,'com.hub.mentifi:id/input_company')
+    start_date = (By.ID,'com.hub.mentifi:id/input_start_date')
+    end_date = (By.ID,'com.hub.mentifi:id/input_end_date')
+    upload_file = (By.ID,'com.hub.mentifi:id/input_upload_file')
 
 #com.hub.mentifi:id/image_profile
 
@@ -51,36 +56,62 @@ class Edit_Profile(Page):
         self.find_element(self.lname).send_keys(last)
         self.find_element(self.pname).clear()
         self.find_element(self.pname).send_keys(prefer)
-        time.sleep(1)
+        time.sleep(3)
+        self.driver.hide_keyboard()
         test_parent2 = self.driver.find_element(By.ID ,'com.hub.mentifi:id/radio_gender')
         test2 = test_parent2.find_elements(By.CLASS_NAME,'android.widget.RadioButton')
         test2[gender].click()
         time.sleep(1)
         self.find_element(self.phone).clear()
         self.find_element(self.phone).send_keys(tlp)
-        time.sleep(1)
-        self.find_element(self.pic).click()
-        time.sleep(1)
-        a = self.driver.find_element(By.ID,'com.asus.gallery:id/fab_root')
-        a.click()
         time.sleep(2)
-        file_base64 = self.driver.pull_file('/sdcard/Pictures/1526805882240.jpg')
-        print(file_base64)
+        # self.find_element(self.pic).click()
+        # self.find_element(self.allow).click()
+        # self.find_element(self.pic).click()
+        # time.sleep(2)
+        # self.driver.pull_file('/root/Internal storage/DCIM/Camera/20180705_090252.jpg')
+        #self.driver.tap([(0,190),(520,300)])
+        # self.swipe_to_bottom()
+        # time.sleep(3)
+        #a = self.driver.find_element_by_id('com.sec.android.gallery3d:id/main_relativelayout')
+        #self.driver.switch_to_frame(self.driver.find_element_by_xpath("//*[@class='android.widget.FrameLayout' and ./*[@id='decor_content_parent']]"))
+        #self.driver.tap([(395, 347), (684, 636)], 2)
+        # test_parent4 = self.driver.find_element(By.ID, 'com.sec.android.gallery3d:id/tabHost')
+        # test4 = test_parent4.find_elements(By.CLASS_NAME,'android.widget.LinearLayout')
+        # test4[0].click()
+        # time.sleep(3)
+        #self.driver.start_activity("com.sec.android.gallery3d","app.GalleryActivity")
+        # time.sleep(1)
+        # self.driver.tap([(395, 347), (792,1208)], 2)
+        # self.driver.start_activity("com.hub.mentifi",
+        #                            "com.hub.mentifi.ui.splash.SplashActivity")
+        # self.driver.switch_to_window('com.sec.samsung.gallery.glview.composeView.PositionControllerBase$ThumbObject')
+        # b = self.driver.find_elements(By.CLASS_NAME,'com.sec.samsung.gallery.glview.composeView.PositionControllerBase$ThumbObject')
+        # print(b)
+        # time.sleep(1)
+        # self.driver.start_activity("com.sec.android.gallery3d", "app.GalleryOpaqueActivity")
+        #b[1].click()
+        # time.sleep(2)
         # b = self.driver.find_element(By.ID, 'com.asus.gallery:id/fab_root')
-        # b.click()
+        #print(b)
+        #b.click()
         # time.sleep(3)
         #self.find_element(self.crop_ok).click()
         #self.driver.push_file('/path/to/device/foo.bar', 'QXJlIHlvdXIgYmVlcnMgb2theT8=')
         #self.driver.push_file('/sdcard/Pictures/1526805882240.jpg')
         # time.sleep(1)
-        #self.find_element(self.save_button).click()
+        self.find_element(self.save_button).click()
         print('profile edited :'+first+','+last+','+prefer+','+tlp)
-#com.asus.gallery:id/gl_root_view
+#com.sec.android.gallery3d:id/gl_root_view
     #com.asus.gallery:id/fab_root
+    #[395,347][684,636]
     #[0,0][792,1208]
     #[0,0][800,1216]
-    #android.widget.RelativeLayout
-    #android.view.View
+    #//*[@class='android.widget.FrameLayout' and @width>0 and ./*[@class='android.widget.LinearLayout' and ./*[@class='android.widget.FrameLayout' and ./*[@id='decor_content_parent']]]]
+    #//*[@class='android.widget.FrameLayout' and @height>0 and ./*[@class='android.widget.LinearLayout' and ./*[@class='android.widget.FrameLayout' and ./*[@id='decor_content_parent']]]]
+    #//*[@class='android.widget.FrameLayout' and @height>0 and ./*[@id='decor_content_parent']]
+    #//*[@class='android.widget.FrameLayout' and ./*[@id='decor_content_parent']]
+    #//*[@class='android.widget.FrameLayout' and ./*[@id='decor_content_parent']]
 
     def edit_biography_mentee(self, about, skill):
         self.find_element(self.more).click()
@@ -162,6 +193,10 @@ class Edit_Profile(Page):
         self.find_element(self.phone).send_keys(tlp)
         time.sleep(1)
         self.driver.hide_keyboard()
+        time.sleep(2)
+        self.find_element(self.pic).click()
+        self.find_element(self.allow).click()
+        self.find_element(self.pic).click()
         time.sleep(1)
         self.find_element(self.save_button).click()
         print('profile edited :'+first+','+last+','+work+','+tlp)
@@ -184,3 +219,101 @@ class Edit_Profile(Page):
         self.find_element(self.institution).send_keys(institution)
         time.sleep(1)
         self.find_element(self.save_button).click()
+
+    def edit_previous_experience_mentee(self,job,employer,start_date):
+        self.find_element(self.more).click()
+        self.find_element(self.profile).click()
+        time.sleep(1)
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/tabs')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.support.v7.app.ActionBar$Tab')
+        test[3].click()
+        time.sleep(4)
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/recycler_view')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
+        test[0].click()
+        time.sleep(1)
+        self.find_element(self.job_title).clear()
+        self.find_element(self.job_title).send_keys(job)
+        self.find_element(self.employer).clear()
+        self.find_element(self.employer).send_keys(employer)
+        self.find_element(self.start_date).clear()
+        self.find_element(self.start_date).send_keys(start_date)
+        self.driver.hide_keyboard()
+        time.sleep(1)
+        #self.find_element(self.upload_file).click()
+        self.find_element(self.save_button).click()
+        print('previous experience mentee edited')
+
+
+
+    def edit_current_experience_mentee(self,job,employer,start_date,end_date):
+        self.find_element(self.more).click()
+        self.find_element(self.profile).click()
+        time.sleep(1)
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/tabs')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.support.v7.app.ActionBar$Tab')
+        test[3].click()
+        time.sleep(4)
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/recycler_view')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
+        test[1].click()
+        time.sleep(1)
+        self.find_element(self.job_title).clear()
+        self.find_element(self.job_title).send_keys(job)
+        self.find_element(self.employer).clear()
+        self.find_element(self.employer).send_keys(employer)
+        self.find_element(self.start_date).clear()
+        self.find_element(self.start_date).send_keys(start_date)
+        self.find_element(self.end_date).clear()
+        self.find_element(self.end_date).send_keys(end_date)
+        self.driver.hide_keyboard()
+        self.find_element(self.save_button).click()
+        print('current experience mentee edited')
+
+    def edit_previous_experience_mentor(self, job, employer, start_date):
+        self.find_element(self.more).click()
+        self.find_element(self.profile).click()
+        time.sleep(1)
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/tabs')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.support.v7.app.ActionBar$Tab')
+        test[3].click()
+        time.sleep(4)
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/recycler_view')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
+        test[0].click()
+        time.sleep(1)
+        self.find_element(self.job_title).clear()
+        self.find_element(self.job_title).send_keys(job)
+        self.find_element(self.employer).clear()
+        self.find_element(self.employer).send_keys(employer)
+        self.find_element(self.start_date).clear()
+        self.find_element(self.start_date).send_keys(start_date)
+        self.driver.hide_keyboard()
+        time.sleep(1)
+        # self.find_element(self.upload_file).click()
+        self.find_element(self.save_button).click()
+        print('previous experience mentor edited')
+
+    def edit_current_experience_mentor(self, job, employer, start_date, end_date):
+        self.find_element(self.more).click()
+        self.find_element(self.profile).click()
+        time.sleep(1)
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/tabs')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.support.v7.app.ActionBar$Tab')
+        test[3].click()
+        time.sleep(4)
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/recycler_view')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
+        test[1].click()
+        time.sleep(1)
+        self.find_element(self.job_title).clear()
+        self.find_element(self.job_title).send_keys(job)
+        self.find_element(self.employer).clear()
+        self.find_element(self.employer).send_keys(employer)
+        self.find_element(self.start_date).clear()
+        self.find_element(self.start_date).send_keys(start_date)
+        self.find_element(self.end_date).clear()
+        self.find_element(self.end_date).send_keys(end_date)
+        self.driver.hide_keyboard()
+        self.find_element(self.save_button).click()
+        print('current experience mentor edited')
