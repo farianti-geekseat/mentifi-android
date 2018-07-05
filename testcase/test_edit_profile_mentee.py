@@ -89,9 +89,9 @@ class TestEditProfile():
     #     login.input_password(password)
     #     login.tap_sign_in()
     #     login.select_company(0)
-    #     edit_profile.edit_previous_experience_mentee('Fighter','WBA','January 2018')
+    #     edit_profile.edit_previous_experience_mentee('Pilot','Aircraft','March 2018')
     #     time.sleep(2)
-    #     edit_profile.edit_current_experience_mentee('Crusader', 'Holy War', 'May 2018','December 2019')
+    #     edit_profile.edit_current_experience_mentee('Soldier', 'Holy War', 'July 2018','December 2019')
     #     logout.logout(2)
 
     def test_edit_profile_mentor(self):
@@ -100,7 +100,9 @@ class TestEditProfile():
         login.input_password(password)
         login.tap_sign_in()
         login.select_company(0)
-        edit_profile.edit_previous_experience_mentor('Fighter','WBA','January 2018')
+        edit_profile.edit_current_experience_mentor('Chef','Kitchen','u','February 2018')
         time.sleep(2)
-        edit_profile.edit_current_experience_mentor('Crusader', 'Holy War', 'May 2018','December 2019')
+        edit_profile.edit_previous_experience_mentor('Priest', 'Church', 'June 2018','October 2019')
+        time.sleep(3)
+        edit_profile.edit_non_work_experience_mentor(0,4)
         logout.logout(2)

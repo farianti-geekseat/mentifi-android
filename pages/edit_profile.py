@@ -37,6 +37,8 @@ class Edit_Profile(Page):
     start_date = (By.ID,'com.hub.mentifi:id/input_start_date')
     end_date = (By.ID,'com.hub.mentifi:id/input_end_date')
     upload_file = (By.ID,'com.hub.mentifi:id/input_upload_file')
+    area = (By.ID,'com.hub.mentifi:id/tags_edit')
+    other = (By.ID,'com.hub.mentifi:id/input_other')
 
 #com.hub.mentifi:id/image_profile
 
@@ -220,7 +222,7 @@ class Edit_Profile(Page):
         time.sleep(1)
         self.find_element(self.save_button).click()
 
-    def edit_previous_experience_mentee(self,job,employer,start_date):
+    def edit_current_experience_mentee(self,job,employer,start_date):
         self.find_element(self.more).click()
         self.find_element(self.profile).click()
         time.sleep(1)
@@ -246,7 +248,7 @@ class Edit_Profile(Page):
 
 
 
-    def edit_current_experience_mentee(self,job,employer,start_date,end_date):
+    def edit_previous_experience_mentee(self,job,employer,start_date,end_date):
         self.find_element(self.more).click()
         self.find_element(self.profile).click()
         time.sleep(1)
@@ -270,7 +272,7 @@ class Edit_Profile(Page):
         self.find_element(self.save_button).click()
         print('current experience mentee edited')
 
-    def edit_previous_experience_mentor(self, job, employer, start_date):
+    def edit_current_experience_mentor(self, job, employer,area, start_date):
         self.find_element(self.more).click()
         self.find_element(self.profile).click()
         time.sleep(1)
@@ -278,23 +280,34 @@ class Edit_Profile(Page):
         test = test_parent.find_elements(By.CLASS_NAME, 'android.support.v7.app.ActionBar$Tab')
         test[3].click()
         time.sleep(4)
-        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/recycler_view')
-        test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
-        test[0].click()
+        test_parent2 = self.driver.find_element(By.ID, 'com.hub.mentifi:id/recycler_view')
+        test2 = test_parent2.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
+        test2[0].click()
         time.sleep(1)
         self.find_element(self.job_title).clear()
         self.find_element(self.job_title).send_keys(job)
         self.find_element(self.employer).clear()
         self.find_element(self.employer).send_keys(employer)
+        self.find_element(self.area).click()
+        self.find_element(self.area).send_keys(area)
+        time.sleep(3)
+        self.find_element(self.employer).click()
+        # test3 = self.driver.find_element(By.XPATH, "//*[@class='android.widget.FrameLayout' and ./*[@class='android.widget.ListView']]")
+        # print(test3)
+        #test3[0].click()
+        time.sleep(1)
         self.find_element(self.start_date).clear()
         self.find_element(self.start_date).send_keys(start_date)
-        self.driver.hide_keyboard()
+        # self.driver.hide_keyboard()
         time.sleep(1)
         # self.find_element(self.upload_file).click()
         self.find_element(self.save_button).click()
         print('previous experience mentor edited')
-
-    def edit_current_experience_mentor(self, job, employer, start_date, end_date):
+#android.widget.RelativeLayout
+#//*[@class='android.widget.ListView']
+#com.hub.mentifi:id/text_title
+    #//*[@class='android.widget.FrameLayout' and ./*[@class='android.widget.ListView']]
+    def edit_previous_experience_mentor(self, job, employer, start_date, end_date):
         self.find_element(self.more).click()
         self.find_element(self.profile).click()
         time.sleep(1)
@@ -317,3 +330,25 @@ class Edit_Profile(Page):
         self.driver.hide_keyboard()
         self.find_element(self.save_button).click()
         print('current experience mentor edited')
+
+    def edit_non_work_experience_mentor(self, alias1, alias2):
+        self.find_element(self.more).click()
+        self.find_element(self.profile).click()
+        time.sleep(1)
+        self.driver.swipe(65,1533,65,1187)
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/tabs')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.support.v7.app.ActionBar$Tab')
+        test[3].click()
+        time.sleep(3)
+        test_parent2 = self.driver.find_element(By.ID, 'com.hub.mentifi:id/linear_non_formal')
+        test2 = test_parent2.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
+        # print(test2)
+        test2[0].click()
+        time.sleep(1)
+        test3 = self.driver.find_elements(By.CLASS_NAME, 'android.widget.CheckBox')
+        test3[alias1].click()
+        test3[alias2].click()
+        self.find_element(self.save_button).click()
+        print('current experience mentor edited')
+        #[65,1533][387,1574]
+        #[65, 1187][246, 1228]
