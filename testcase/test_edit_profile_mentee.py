@@ -83,18 +83,18 @@ class TestEditProfile():
     #         time.sleep(2)
     #         logout.logout(2)
 
-    # def test_edit_profile_mentee(self):
+    # def test_edit_experience_mentee(self):
     #     login.verified_all_element()
     #     login.input_email(mentee)
     #     login.input_password(password)
     #     login.tap_sign_in()
     #     login.select_company(0)
-    #     edit_profile.edit_previous_experience_mentee('Pilot','Aircraft','March 2018')
+    #     edit_profile.edit_current_experience_mentee('Pilot','Aircraft','March 2018',5)
     #     time.sleep(2)
-    #     edit_profile.edit_current_experience_mentee('Soldier', 'Holy War', 'July 2018','December 2019')
+    #     edit_profile.edit_previous_experience_mentee('Soldier', 'Holy War', 'July 2018','December 2019')
     #     logout.logout(2)
 
-    # def test_edit_profile_mentor(self):
+    # def test_edit_experience_mentor(self):
     #     login.verified_all_element()
     #     login.input_email(mentor)
     #     login.input_password(password)
