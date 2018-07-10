@@ -9,7 +9,7 @@ import pytest
 
 
 
-class Connection(Page):
+class Connection_Dashboard(Page):
     connected =(By.XPATH,"//*[@text='Connected']")
     pending =(By.XPATH,"//*[@text='Pending']")
     request =(By.XPATH,"//*[@text='Request']")
@@ -29,6 +29,7 @@ class Connection(Page):
     button_clear = (By.ID,'com.hub.mentifi:id/button_clear')
     connect = (By.ID,'com.hub.mentifi:id/btn_positive')
     back_button = (By.XPATH,"//*[@contentDescription='Navigate up']")
+
     def click_connection(self):
         self.find_element(self.con_dash).click()
 
@@ -154,6 +155,7 @@ class Connection(Page):
         test_parent3 = self.driver.find_element(By.XPATH, "//*[@class='android.widget.ListView']")
         test3 = test_parent3.find_elements(By.CLASS_NAME, 'android.widget.TextView')
         test3[0].click()
+        time.sleep(2)
         self.find_element(self.connect).click()
         time.sleep(3)
         test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/action_bar')
@@ -176,6 +178,7 @@ class Connection(Page):
         test_parent3 = self.driver.find_element(By.XPATH, "//*[@class='android.widget.ListView']")
         test3 = test_parent3.find_elements(By.CLASS_NAME, 'android.widget.TextView')
         test3[0].click()
+        time.sleep(2)
         self.find_element(self.connect).click()
         time.sleep(3)
         test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/action_bar')
@@ -225,6 +228,7 @@ class Connection(Page):
         test2 = test_parent2.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
         test2[0].click()
         self.driver.hide_keyboard()
+
     def click_search(self):
         self.find_element(self.search).click()
 
