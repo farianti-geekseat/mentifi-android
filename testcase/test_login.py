@@ -43,10 +43,7 @@ class TestLogin():
         login.input_email(multi_id)
         login.input_password(password)
         login.tap_sign_in()
-<<<<<<< HEAD
-=======
         time.sleep(2)
->>>>>>> feature/feature_goals
         login.select_company(0)
         print('Successfully login multiple account')
         logout.logout(2)
