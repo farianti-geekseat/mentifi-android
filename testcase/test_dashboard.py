@@ -37,7 +37,9 @@ class TestDashboard():
         time.sleep(5)
         print('Successfully login')
         dashboard.check_mentor_dashboard()
+        time.sleep(1)
         dashboard.check_mentor_pen_dashboard()
+        time.sleep(1)
         dashboard.check_mentor_whatshap()
         logout.logout(2)
 
@@ -51,7 +53,9 @@ class TestDashboard():
         time.sleep(5)
         print('Successfully login')
         dashboard.check_mentee_dashboard()
+        time.sleep(1)
         dashboard.check_mentee_pen_dashboard()
+        time.sleep(1)
         dashboard.check_mentee_whatshap()
         logout.logout(2)
 

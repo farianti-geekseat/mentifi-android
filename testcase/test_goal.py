@@ -30,8 +30,8 @@ class TestGoal():
         login.select_company(0)
         goal.click_goal()
         time.sleep(2)
-        goal.add_goal('test goal1',2)
-        time.sleep(1)
+        goal.add_goal('test Auto',1)
+        time.sleep(5)
         logout.logout(2)
 
     def test_remove_goal_self(self):
@@ -42,8 +42,8 @@ class TestGoal():
         login.select_company(0)
         goal.click_goal()
         time.sleep(2)
-        goal.remove_goal(2)
-        time.sleep(1)
+        goal.remove_goal(1)
+        time.sleep(4)
         logout.logout(2)
 
 
@@ -55,8 +55,8 @@ class TestGoal():
         login.select_company(1)
         goal.click_goal()
         time.sleep(3)
-        goal.edit_goal(1,'set automation')
-        time.sleep(1)
+        goal.edit_goal(1,'GO auto2')
+        time.sleep(4)
         logout.logout(2)
 
     def test_add_progress(self):
@@ -67,6 +67,6 @@ class TestGoal():
         login.select_company(1)
         goal.click_goal()
         time.sleep(2)
-        goal.add_progress(2,'naufal jelek')
-        time.sleep(2)
+        goal.add_progress(1,'naufal Carry')
+        time.sleep(4)
         logout.logout(2)

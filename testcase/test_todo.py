@@ -28,7 +28,7 @@ class TestToDo():
         login.select_company(0)
         todo.click_todo()
         time.sleep(3)
-        todo.add_todo_self('test todo','set')
+        todo.add_todo_self('test todo','a')
         logout.logout(2)
 
     def test_add_todo_mentor(self):
@@ -39,7 +39,7 @@ class TestToDo():
         login.select_company(0)
         todo.click_todo()
         time.sleep(3)
-        todo.add_todo_mentor('test todo','set','yog')
+        todo.add_todo_mentor('test todo','au','yog')
         logout.logout(2)
 
     def test_edit_todo_self(self):

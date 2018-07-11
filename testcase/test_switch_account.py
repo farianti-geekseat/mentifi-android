@@ -14,6 +14,7 @@ driver = Connection.driver
 
 switch = pages.Switch_Account()
 login = pages.Login()
+logout = pages.Logout()
 password = 'ZXasqw12'
 single_id = "gamns04+menti1@gmail.com"
 multi_id = "gamns08+yogya2@gmail.com"
@@ -28,3 +29,4 @@ class TestSwitch():
         login.select_company(0)
         switch.switch_account(2)
         print('Successfully switch account')
+        logout.logout(2)

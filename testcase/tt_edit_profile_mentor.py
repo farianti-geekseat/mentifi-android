@@ -24,15 +24,15 @@ mentee = "gamns08+yogya3@gmail.com"
 class TestEditProfile():
 
 
-    def test_edit_profile_mentor(self):
-        login.verified_all_element()
-        login.input_email(mentor)
-        login.input_password(password)
-        login.tap_sign_in()
-        login.select_company(0)
-        edit_profile.edit_personal_detail_mentor('Yogie','Basuki','08322552763',0,'332232323')
-        time.sleep(2)
-        logout.logout(2)
+    # def test_edit_profile_mentor(self):
+    #     login.verified_all_element()
+    #     login.input_email(mentor)
+    #     login.input_password(password)
+    #     login.tap_sign_in()
+    #     login.select_company(0)
+    #     edit_profile.edit_personal_detail_mentor('Yogie','Basuki','08322552763',0,'332232323')
+    #     time.sleep(2)
+    #     logout.logout(2)
 
     def test_edit_bio_mentor(self):
             login.verified_all_element()
