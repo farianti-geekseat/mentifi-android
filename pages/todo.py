@@ -51,7 +51,7 @@ class ToDo(Page):
             k = i.text
             print(k)
 
-    def edit_todo_self(self,alias,title):
+    def edit_todo_self(self,alias,title,tag):
         click_todo_parent = self.driver.find_element(By.ID,'com.hub.mentifi:id/list')
         click_todo = click_todo_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
         click_todo[alias].click()
@@ -70,13 +70,17 @@ class ToDo(Page):
         time.sleep(1)
         tests[2].click()
         self.find_element(self.tag_goal).click()
-        self.find_element(self.tag_goal).send_keys('set')
-        time.sleep(1)
-        self.tap_first_result_auto_complete(self.find_element(self.tag_goal))
+        self.find_element(self.tag_goal).send_keys(tag)
+        time.sleep(3)
+        self.find_element(self.priority).click()
+        #self.tap_first_result_auto_complete(self.find_element(self.tag_goal))
+        # parent = self.driver.find_elements(By.CLASS_NAME, 'android.widget.FrameLayout')
+        # j = parent[11].find_elements(By.CLASS_NAME, 'android.widget.RelativeLayout')
+        # j[1].click()
         #todo_assign2[1].click()
         self.find_element(self.save).click()
 
-    def edit_todo_mentor(self,alias,title,mentor):
+    def edit_todo_mentor(self,alias,title,mentor,tag):
         self.find_element(self.search_mentor).click()
         self.find_element(self.search_mentor).send_keys(mentor)
         time.sleep(2)
@@ -105,9 +109,13 @@ class ToDo(Page):
         todo_assign = todo_parent.find_elements(By.CLASS_NAME,'android.widget.CheckedTextView')
         todo_assign[1].click()
         self.find_element(self.tag_goal).click()
-        self.find_element(self.tag_goal).send_keys('set')
+        self.find_element(self.tag_goal).send_keys(tag)
         time.sleep(1)
-        self.tap_first_result_auto_complete(self.find_element(self.tag_goal))
+        self.find_element(self.priority).click()
+        #self.tap_first_result_auto_complete(self.find_element(self.tag_goal))
+        # parent = self.driver.find_elements(By.CLASS_NAME, 'android.widget.FrameLayout')
+        # j = parent[11].find_elements(By.CLASS_NAME, 'android.widget.RelativeLayout')
+        # j[1].click()
         self.find_element(self.save).click()
 #com.hub.mentifi:id/text_title
     #text_title
@@ -118,7 +126,7 @@ class ToDo(Page):
 
 
     def delete_todo_self(self,alias):
-        click_todo_parent = self.driver.find_element(By.ID,'com.hub.mentifi:id/list')
+        click_todo_parent = self.driver.find_element(By.ID,'com.hub.mentifi:id/viewpager')
         click_todo = click_todo_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
         click_todo[alias].click()
         time.sleep(2)
@@ -134,7 +142,8 @@ class ToDo(Page):
         self.find_element(self.search_mentor).send_keys(mentor)
         time.sleep(2)
         self.tap_first_result_auto_complete(self.find_element(self.search_mentor))
-        click_todo_parent = self.driver.find_element(By.ID,'com.hub.mentifi:id/list')
+        time.sleep(3)
+        click_todo_parent = self.driver.find_element(By.ID,'com.hub.mentifi:id/viewpager')
         click_todo = click_todo_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
         click_todo[alias].click()
         time.sleep(2)
@@ -146,7 +155,7 @@ class ToDo(Page):
         print('delete todo')
 
     def complete_todo_self(self,alias):
-        click_todo_parent = self.driver.find_element(By.ID,'com.hub.mentifi:id/list')
+        click_todo_parent = self.driver.find_element(By.ID,'com.hub.mentifi:id/viewpager')
         click_todo = click_todo_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
         click_todo[alias].click()
         time.sleep(2)
@@ -159,10 +168,11 @@ class ToDo(Page):
     def complete_todo_mentor(self,alias,mentor):
         self.find_element(self.search_mentor).click()
         self.find_element(self.search_mentor).send_keys(mentor)
-        self.driver.hide_keyboard()
+        # self.driver.hide_keyboard()
         time.sleep(2)
         self.tap_first_result_auto_complete(self.find_element(self.search_mentor))
-        click_todo_parent = self.driver.find_element(By.ID,'com.hub.mentifi:id/list')
+        #android.widget.TextView
+        click_todo_parent = self.driver.find_element(By.ID,'com.hub.mentifi:id/viewpager')
         click_todo = click_todo_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
         click_todo[alias].click()
         time.sleep(2)
@@ -173,6 +183,8 @@ class ToDo(Page):
         print('mark as complete todo')
 
     def incomplete_todo_self(self,alias):
+        self.find_element(self.complete).click()
+        time.sleep(4)
         click_todo_parent = self.driver.find_element(By.ID,'com.hub.mentifi:id/list')
         click_todo = click_todo_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
         click_todo[alias].click()
@@ -188,8 +200,9 @@ class ToDo(Page):
         self.find_element(self.search_mentor).send_keys(mentor)
         time.sleep(2)
         self.tap_first_result_auto_complete(self.find_element(self.search_mentor))
-        self.driver.hide_keyboard()
-        time.sleep(1)
+        time.sleep(2)
+        self.find_element(self.complete).click()
+        time.sleep(4)
         click_todo_parent = self.driver.find_element(By.ID,'com.hub.mentifi:id/list')
         click_todo = click_todo_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
         click_todo[alias].click()
@@ -218,9 +231,12 @@ class ToDo(Page):
         self.find_element(self.tag_goal).click()
         time.sleep(1)
         self.find_element(self.tag_goal).send_keys(tag)
-        time.sleep(4)
-        self.tap_first_result_auto_complete(self.find_element(self.tag_goal))
-        # todo_assign2[1].click()
+        time.sleep(5)
+        self.find_element(self.priority).click()
+        # parent = self.driver.find_elements(By.CLASS_NAME,'android.widget.FrameLayout')
+        # j = parent[11].find_elements(By.CLASS_NAME,'android.widget.RelativeLayout')
+        # j[1].click()
+        # #android.widget.RelativeLayout
         self.find_element(self.save).click()
         print('Todo Successfully added')
 
@@ -229,7 +245,6 @@ class ToDo(Page):
         self.find_element(self.search_mentor).send_keys(mentor)
         time.sleep(2)
         self.tap_first_result_auto_complete(self.find_element(self.search_mentor))
-        self.driver.hide_keyboard()
         self.find_element(self.add_todo).click()
         time.sleep(2)
         self.find_element(self.set_title).clear()
@@ -248,7 +263,11 @@ class ToDo(Page):
         time.sleep(1)
         self.find_element(self.tag_goal).send_keys(tag)
         time.sleep(4)
-        self.tap_first_result_auto_complete(self.find_element(self.tag_goal))
+        self.find_element(self.priority).click()
+        #self.tap_first_result_auto_complete(self.find_element(self.tag_goal))
+        # parent = self.driver.find_elements(By.CLASS_NAME, 'android.widget.FrameLayout')
+        # j = parent[11].find_elements(By.CLASS_NAME, 'android.widget.RelativeLayout')
+        # j[1].click()
         # todo_assign2[1].click()
         self.find_element(self.save).click()
         print('Todo Successfully added')
