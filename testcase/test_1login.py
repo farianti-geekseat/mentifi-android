@@ -59,6 +59,7 @@ class TestLogin():
         login.tap_sign_in()
         login.invalid_userpass()
         login.error_message()
+        time.sleep(16)
         print('test_invalid_login3x')
 
     # def test_invalid_login(self):
