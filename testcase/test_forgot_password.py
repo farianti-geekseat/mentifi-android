@@ -27,5 +27,5 @@ class TestFPass():
         forgt_pass.fill_email_password(self.femail)
         forgt_pass.click_reset_link(self.femail)
         time.sleep(2)
-        driver.quit()
+        driver.back()
         # bisa ditambah verify muncul success message
