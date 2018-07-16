@@ -29,7 +29,7 @@ class TestEditProfile():
         login.input_password(password)
         login.tap_sign_in()
         login.select_company(0)
-        edit_profile.edit_personal_detail_mentee('Eremes','Gultom','EG',0,'0838214377')
+        edit_profile.edit_personal_detail_mentee('Eremes','Gultom','EreGul',1,'08382143747','668596','6653562')
         time.sleep(2)
         logout.logout(2)
 
@@ -39,7 +39,7 @@ class TestEditProfile():
             login.input_password(password)
             login.tap_sign_in()
             login.select_company(0)
-            edit_profile.edit_biography_mentee('cool man Mentee','Priest')
+            edit_profile.edit_biography_mentee('cool man Mentee','Scholar','Book',3,'21 Apr 2009')
             time.sleep(2)
             logout.logout(2)
 
@@ -49,7 +49,7 @@ class TestEditProfile():
             login.input_password(password)
             login.tap_sign_in()
             login.select_company(0)
-            edit_profile.edit_education_mentee('Architect','Interior',1,1)
+            edit_profile.edit_education_mentee('Architect','Interior',0,1)
             time.sleep(2)
             logout.logout(2)
 
@@ -59,8 +59,8 @@ class TestEditProfile():
         login.input_password(password)
         login.tap_sign_in()
         login.select_company(0)
-        edit_profile.edit_current_experience_mentee('Pilot','Aircraft','March 2018',5)
+        edit_profile.edit_current_experience_mentee('Pilot','Aircraft','March 2018',2)
         time.sleep(2)
-        edit_profile.edit_previous_experience_mentee('Soldier', 'Holy War', 'July 2018','December 2019')
+        edit_profile.edit_previous_experience_mentee('Soldier', 'Holy War', 'June 2018','March 2019')
         logout.logout(2)
 

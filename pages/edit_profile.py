@@ -40,11 +40,22 @@ class Edit_Profile(Page):
     area = (By.ID,'com.hub.mentifi:id/tags_edit')
     other = (By.ID,'com.hub.mentifi:id/input_other')
     edit_preferences = (By.ID,'com.hub.mentifi:id/action_edit')
+    work_num = (By.ID,'com.hub.mentifi:id/input_work_phone')
+    stu_num = (By.ID,'com.hub.mentifi:id/input_student_number')
+    date_birth =(By.ID,'com.hub.mentifi:id/input_date_of_birth')
+    islander = (By.ID,'com.hub.mentifi:id/switch_islander')
+    international = (By.ID,'com.hub.mentifi:id/switch_international_student')
+    disability = (By.ID,'com.hub.mentifi:id/switch_disability_action_plan')
+    hobby_mentee = (By.ID,'com.hub.mentifi:id/input_hobby')
+    country = (By.ID,'com.hub.mentifi:id/input_country_spinner')
+    length_time = (By.ID,'com.hub.mentifi:id/input_length')
+    plan = (By.ID,'com.hub.mentifi:id/input_upload_plan')
+
 
 #com.hub.mentifi:id/image_profile
 
 
-    def edit_personal_detail_mentee(self,first,last,prefer,gender,tlp):
+    def edit_personal_detail_mentee(self,first,last,prefer,gender,tlp,worknum,studentnum):
         self.find_element(self.more).click()
         self.find_element(self.profile).click()
         self.find_element(self.option).click()
@@ -68,13 +79,17 @@ class Edit_Profile(Page):
         self.find_element(self.phone).clear()
         self.find_element(self.phone).send_keys(tlp)
         time.sleep(2)
+        self.find_element(self.stu_num).clear()
+        self.find_element(self.stu_num).send_keys(studentnum)
+        self.find_element(self.work_num).clear()
+        self.find_element(self.work_num).send_keys(worknum)
         # self.find_element(self.pic).click()
         # self.find_element(self.allow).click()
         # self.find_element(self.pic).click()
         # time.sleep(2)
         # # self.driver.pull_file('/root/Internal storage/DCIM/Camera/20180705_090252.jpg')
         # #self.driver.tap([(0,190),(520,300)])
-        # self.swipe_to_bottom()
+        self.swipe_to_bottom()
         # time.sleep(3)
         #a = self.driver.find_element_by_id('com.sec.android.gallery3d:id/main_relativelayout')
         #self.driver.switch_to_frame(self.driver.find_element_by_xpath("//*[@class='android.widget.FrameLayout' and ./*[@id='decor_content_parent']]"))
@@ -97,28 +112,53 @@ class Edit_Profile(Page):
         # time.sleep(3)
         # time.sleep(1)
         self.find_element(self.save_button).click()
-        print('profile edited :'+first+','+last+','+prefer+','+tlp)
+        print('profile edited :'+first+','+last+','+prefer+','+tlp+','+studentnum+','+worknum)
 #com.sec.android.gallery3d:id/gl_root_view
     #com.asus.gallery:id/fab_root
     #[395,347][684,636]
     #[0,0][792,1208]
     #[0,0][800,1216]
 
-    def edit_biography_mentee(self, about, skill):
+    def edit_biography_mentee(self, about, skill,hobby,length,date):
         self.find_element(self.more).click()
         self.find_element(self.profile).click()
         #self.find_element(self.option).click()
         time.sleep(2)
         self.find_element(self.edit_bio).click()
         time.sleep(1)
+        self.find_element(self.date_birth).clear()
+        self.find_element(self.date_birth).send_keys(date)
         self.find_element(self.about_me).clear()
         self.find_element(self.about_me).send_keys(about)
         self.find_element(self.pro_skill).clear()
         self.find_element(self.pro_skill).send_keys(skill)
+        self.find_element(self.hobby_mentee).click()
+        self.find_element(self.hobby_mentee).clear()
+        self.find_element(self.hobby_mentee).send_keys(hobby)
+        self.driver.hide_keyboard()
+        self.find_element(self.islander).click()
+        self.find_element(self.international).click()
+        self.find_element(self.country).click()
+        time.sleep(2)
+        g = self.driver.find_elements(By.ID,'android:id/text1')
+        g[6].click()
+        time.sleep(1)
+        self.find_element(self.length_time).clear()
+        self.find_element(self.length_time).send_keys(length)
+        self.find_element(self.disability).click()
+        self.find_element(self.plan).click()
+        self.find_element(self.allow).click()
+        self.find_element(self.plan).click()
+        time.sleep(3)
+        parent = self.driver.find_element(By.ID,'com.android.documentsui:id/dir_list')
+        j = parent.find_elements(By.CLASS_NAME,'android.widget.LinearLayout')
+        j[1].click()
+        self.find_element(self.hobby_mentee).click()
+        self.swipe_to_bottom()
         self.find_element(self.save_button).click()
         time.sleep(1)
-        self.driver.hide_keyboard()
-        time.sleep(1)
+        # self.driver.hide_keyboard()
+        # time.sleep(1)
         print('profile bio edited :' + about + ',' + skill )
 
     def edit_education_mentee(self, degree, major,grade,mode):
@@ -147,7 +187,7 @@ class Edit_Profile(Page):
         # test_parent2 = self.driver.find_element(By.ID, 'com.hub.mentifi:id/recycler_view')
         # test2 = test_parent2.find_elements(By.CLASS_NAME, 'android.support.v7.app.ActionBar$Tab')
         # test2[2].click()
-
+        print('Education mentee edited')
 
     def edit_biography_mentor(self, about, skill):
         self.find_element(self.more).click()
@@ -243,16 +283,9 @@ class Edit_Profile(Page):
         # self.driver.hide_keyboard()
         # time.sleep(1)
         self.find_element(self.upload_file).click()
-        self.find_element(self.allow).click()
-        self.find_element(self.upload_file).click()
-        time.sleep(3)
-        # test_parent3 = self.driver.find_element(By.ID, 'com.android.documentsui:id/toolbar')
-        # test3 = test_parent3.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
-        # test3[0].click()
-        # time.sleep(1)
-        # test_parent4 = self.driver.find_element(By.ID, 'com.android.documentsui:id/toolbar')
-        # test4 = test_parent4.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
-        # test4[1].click()
+        # self.find_element(self.allow).click()
+        # self.find_element(self.upload_file).click()
+        time.sleep(5)
         # print('list1')
         # time.sleep(1)
         # test_parent5 = self.driver.find_element(By.ID, 'com.android.documentsui:id/dir_list')
@@ -270,6 +303,18 @@ class Edit_Profile(Page):
         self.find_element(self.save_button).click()
         print('previous experience mentee edited')
 
+    def edit_additional_activities_mentee(self, job, employer, start_date, attach):
+        self.find_element(self.more).click()
+        self.find_element(self.profile).click()
+        time.sleep(1)
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/tabs')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.support.v7.app.ActionBar$Tab')
+        test[3].click()
+        time.sleep(4)
+        test_parent = self.driver.find_element(By.ID, 'com.hub.mentifi:id/recycler_view')
+        test = test_parent.find_elements(By.CLASS_NAME, 'android.widget.ImageButton')
+        test[0].click()
+        time.sleep(1)
 
     def edit_previous_experience_mentee(self,job,employer,start_date,end_date):
         self.find_element(self.more).click()

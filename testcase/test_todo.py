@@ -118,7 +118,7 @@ class TestToDo():
         todo.click_todo()
         todo.click_ongoing()
         time.sleep(5)
-        todo.complete_todo_mentor(0, 'tif')
+        todo.complete_todo_mentor(0,'tif')
         time.sleep(2)
         logout.logout(2)
 
