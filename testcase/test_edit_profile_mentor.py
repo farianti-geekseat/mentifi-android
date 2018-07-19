@@ -21,18 +21,18 @@ password = 'ZXasqw12'
 mentor = "gamns08+yogya2@gmail.com"
 mentee = "gamns08+yogya3@gmail.com"
 
-class TestEditProfile():
+class TestEditProfileMentor():
 
 
-    # def test_edit_profile_mentor(self):
-    #     login.verified_all_element()
-    #     login.input_email(mentor)
-    #     login.input_password(password)
-    #     login.tap_sign_in()
-    #     login.select_company(0)
-    #     edit_profile.edit_personal_detail_mentor('Yogie','Basuki','08322552763',0,'332232323')
-    #     time.sleep(2)
-    #     logout.logout(2)
+    def test_edit_profile_mentor(self):
+        login.verified_all_element()
+        login.input_email(mentor)
+        login.input_password(password)
+        login.tap_sign_in()
+        login.select_company(0)
+        edit_profile.edit_personal_detail_mentor('Yogie','Basuki','08322552763',0,'332232323')
+        time.sleep(2)
+        logout.logout(2)
 
     def test_edit_bio_mentor(self):
             login.verified_all_element()
@@ -40,7 +40,7 @@ class TestEditProfile():
             login.input_password(password)
             login.tap_sign_in()
             login.select_company(0)
-            edit_profile.edit_biography_mentor('cool man Mentor','Slayer')
+            edit_profile.edit_biography_mentor('cool man Mentor','Slayer','gama@linkedin.com')
             time.sleep(2)
             logout.logout(2)
 
@@ -73,6 +73,6 @@ class TestEditProfile():
             login.input_password(password)
             login.tap_sign_in()
             login.select_company(0)
-            edit_profile.edit_mentor_preference('a',1)
+            edit_profile.edit_mentor_preference('a',0,1)
             time.sleep(2)
             logout.logout(2)

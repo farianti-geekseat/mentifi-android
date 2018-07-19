@@ -17,8 +17,8 @@ connection_dash = pages.Connection_Dashboard()
 login = pages.Login()
 logout = pages.Logout()
 password = 'ZXasqw12'
-mentor = "gamns08+yogya2@gmail.com"
-mentee = "gamns08+yogya3@gmail.com"
+mentor = "automentifi+mentor9@gmail.com"
+mentee = "automentifi+mentee9@gmail.com"
 class TestConnection():
 
     def test_connection_connected_view(self):
@@ -30,7 +30,7 @@ class TestConnection():
         time.sleep(2)
         connection_dash.click_connection()
         connection_dash.click_connected()
-        time.sleep(2)
+        time.sleep(4)
         connection_dash.view_profile(0)
         logout.logout(2)
 
@@ -42,7 +42,7 @@ class TestConnection():
         login.select_company(0)
         time.sleep(2)
         connection_dash.click_connection()
-        time.sleep(2)
+        time.sleep(4)
         connection_dash.add_mentor_connections('a',1)
         logout.logout(2)
 
@@ -54,73 +54,74 @@ class TestConnection():
         login.select_company(0)
         time.sleep(2)
         connection_dash.click_connection()
-        time.sleep(2)
+        time.sleep(4)
         connection_dash.add_mentee_connections('a',1)
         logout.logout(2)
 
-    # def test_connection_pending_view(self):
-    #     login.verified_all_element()
-    #     login.input_email(mentee)
-    #     login.input_password(password)
-    #     login.tap_sign_in()
-    #     login.select_company(0)
-    #     time.sleep(2)
-    #     connection_dash.click_connection()
-    #     connection_dash.click_pending()
-    #     time.sleep(2)
-    #     connection_dash.pending_view_profile(0)
-    #     logout.logout(2)
+    def test_connection_pending_view(self):
+        login.verified_all_element()
+        login.input_email(mentee)
+        login.input_password(password)
+        login.tap_sign_in()
+        login.select_company(0)
+        time.sleep(2)
+        connection_dash.click_connection()
+        connection_dash.click_pending()
+        time.sleep(4)
+        connection_dash.pending_view_profile(0)
+        logout.logout(2)
 
-    # def test_connection_pending_remove_connection(self):
-    #     login.verified_all_element()
-    #     login.input_email(mentee)
-    #     login.input_password(password)
-    #     login.tap_sign_in()
-    #     login.select_company(0)
-    # time.sleep(2)
-    #     connection_dash.click_connection()
-    #     connection_dash.click_pending()
-    #     time.sleep(2)
-    #     connection_dash.pending_remove_connection(0)
+    def test_connection_pending_remove_connection(self):
+        login.verified_all_element()
+        login.input_email(mentor)
+        login.input_password(password)
+        login.tap_sign_in()
+        login.select_company(0)
+        time.sleep(2)
+        connection_dash.click_connection()
+        connection_dash.click_pending()
+        time.sleep(4)
+        connection_dash.pending_remove_connection(0)
+        logout.logout(2)
 
-    # def test_connection_accept_request_connection(self):
-    #     login.verified_all_element()
-    #     login.input_email(mentor)
-    #     login.input_password(password)
-    #     login.tap_sign_in()
-    #     login.select_company(0)
-    #time.sleep(2)
-    #     connection_dash.click_connection()
-    #     connection_dash.click_request()
-    #     connection_dash.request_accept(0)
-    #     logout.logout(1)
+    def test_connection_accept_request_connection(self):
+        login.verified_all_element()
+        login.input_email(mentor)
+        login.input_password(password)
+        login.tap_sign_in()
+        login.select_company(0)
+        time.sleep(2)
+        connection_dash.click_connection()
+        connection_dash.click_request()
+        connection_dash.request_accept(0)
+        logout.logout(2)
 
 
-    # def test_connection_request_remove_connection(self):
-    #     login.verified_all_element()
-    #     login.input_email(mentor)
-    #     login.input_password(password)
-    #     login.tap_sign_in()
-    #     login.select_company(0)
-    #time.sleep(2)
-    #     connection_dash.click_connection()
-    #     connection_dash.click_request()
-    #     connection_dash.request_remove_connection(0)
-    #     logout.logout()
+    def test_connection_request_remove_connection(self):
+        login.verified_all_element()
+        login.input_email(mentor)
+        login.input_password(password)
+        login.tap_sign_in()
+        login.select_company(0)
+        time.sleep(2)
+        connection_dash.click_connection()
+        connection_dash.click_request()
+        time.sleep(4)
+        connection_dash.request_remove_connection(0)
+        logout.logout(2)
 
-    # def test_connection_reject_request_connection(self):
-    #     login.verified_all_element()
-    #     login.input_email(mentor)
-    #     login.input_password(password)
-    #     login.tap_sign_in()
-    #     login.select_company(0)
-    #time.sleep(2)
-    #     connection_dash.click_connection()
-    #     connection_dash.click_request()
-    #     time.sleep(2)
-    #     connection_dash.request_reject(0)
-    #     logout.logout()
-
+    def test_connection_reject_request_connection(self):
+        login.verified_all_element()
+        login.input_email(mentor)
+        login.input_password(password)
+        login.tap_sign_in()
+        login.select_company(0)
+        time.sleep(2)
+        connection_dash.click_connection()
+        connection_dash.click_request()
+        time.sleep(3)
+        connection_dash.request_reject(0)
+        logout.logout(2)
 
 
     def test_view_connection_mentee(self):
@@ -130,7 +131,7 @@ class TestConnection():
         login.tap_sign_in()
         login.select_company(0)
         connection_dash.click_connection()
-        time.sleep(2)
+        time.sleep(3)
         connection_dash.view_mentor_connections('a',0)
         logout.logout(2)
 
@@ -141,6 +142,6 @@ class TestConnection():
         login.tap_sign_in()
         login.select_company(0)
         connection_dash.click_connection()
-        time.sleep(2)
+        time.sleep(3)
         connection_dash.view_mentee_connections('a',0)
         logout.logout(2)

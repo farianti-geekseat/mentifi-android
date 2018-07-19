@@ -21,7 +21,7 @@ password = 'ZXasqw12'
 mentor = "gamns08+yogya2@gmail.com"
 mentee = "gamns08+yogya3@gmail.com"
 
-class TestEditProfile():
+class TestEditProfileMentee():
 
     def test_edit_profile_mentee(self):
         login.verified_all_element()

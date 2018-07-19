@@ -50,7 +50,9 @@ class Edit_Profile(Page):
     country = (By.ID,'com.hub.mentifi:id/input_country_spinner')
     length_time = (By.ID,'com.hub.mentifi:id/input_length')
     plan = (By.ID,'com.hub.mentifi:id/input_upload_plan')
-
+    linkedin = (By.ID,'com.hub.mentifi:id/input_linkedin_profile')
+    graduate = (By.ID,'com.hub.mentifi:id/switchGraduateStatus')
+    referred = (By.ID,'com.hub.mentifi:id/switchReferredStatus')
 
 #com.hub.mentifi:id/image_profile
 
@@ -189,22 +191,7 @@ class Edit_Profile(Page):
         # test2[2].click()
         print('Education mentee edited')
 
-    def edit_biography_mentor(self, about, skill):
-        self.find_element(self.more).click()
-        self.find_element(self.profile).click()
-        #self.find_element(self.option).click()
-        time.sleep(2)
-        self.find_element(self.edit_bio).click()
-        time.sleep(1)
-        self.find_element(self.bio).clear()
-        self.find_element(self.bio).send_keys(about)
-        self.find_element(self.hobby).clear()
-        self.find_element(self.hobby).send_keys(skill)
-        time.sleep(1)
-        self.driver.hide_keyboard()
-        # time.sleep(1)
-        self.find_element(self.save_button).click()
-        print('profile bio edited :' + about + ',' + skill )
+
 
     def edit_personal_detail_mentor(self,first,last,work,gender,tlp):
         self.find_element(self.more).click()
@@ -219,8 +206,6 @@ class Edit_Profile(Page):
         self.find_element(self.fname).send_keys(first)
         self.find_element(self.lname).clear()
         self.find_element(self.lname).send_keys(last)
-        self.find_element(self.work).clear()
-        self.find_element(self.work).send_keys(work)
         time.sleep(1)
         test_parent2 = self.driver.find_element(By.ID ,'com.hub.mentifi:id/radio_gender')
         test2 = test_parent2.find_elements(By.CLASS_NAME,'android.widget.RadioButton')
@@ -229,8 +214,8 @@ class Edit_Profile(Page):
         self.driver.hide_keyboard()
         self.find_element(self.phone).clear()
         self.find_element(self.phone).send_keys(tlp)
-        time.sleep(1)
-        self.driver.hide_keyboard()
+        self.find_element(self.work).clear()
+        self.find_element(self.work).send_keys(work)
         time.sleep(2)
         # self.find_element(self.pic).click()
         # self.find_element(self.allow).click()
@@ -239,6 +224,26 @@ class Edit_Profile(Page):
         self.find_element(self.save_button).click()
         print('profile edited :'+first+','+last+','+work+','+tlp)
 
+    def edit_biography_mentor(self, about, skill,linkedin):
+        self.find_element(self.more).click()
+        self.find_element(self.profile).click()
+        #self.find_element(self.option).click()
+        time.sleep(2)
+        self.find_element(self.edit_bio).click()
+        time.sleep(1)
+        self.find_element(self.bio).clear()
+        self.find_element(self.bio).send_keys(about)
+        self.find_element(self.hobby).clear()
+        self.find_element(self.hobby).send_keys(skill)
+        self.find_element(self.linkedin).clear()
+        self.find_element(self.linkedin).send_keys(linkedin)
+        time.sleep(1)
+        # self.driver.hide_keyboard()
+        self.find_element(self.graduate).click()
+        self.find_element(self.referred).click()
+        # time.sleep(1)
+        self.find_element(self.save_button).click()
+        print('profile bio edited :' + about + ',' + skill )
 
     def edit_education_mentor(self, degree, institution,start_date,end_date):
         self.find_element(self.more).click()
@@ -359,22 +364,23 @@ class Edit_Profile(Page):
         self.find_element(self.area).click()
         self.find_element(self.area).send_keys(area)
         time.sleep(3)
-        self.tap_first_result_auto_complete(self.find_element(self.area))
+        self.tap_first_result_auto_complete(self.find_element(self.job_title))
         # test3 = self.driver.find_element(By.XPATH, "//*[@class='android.widget.FrameLayout' and ./*[@class='android.widget.ListView']]")
         # print(test3)
-        #test3[0].click()
-        time.sleep(1)
+        # test3[0].click()
+        # time.sleep(1)
         self.find_element(self.start_date).clear()
         self.find_element(self.start_date).send_keys(start_date)
         # self.driver.hide_keyboard()
         time.sleep(1)
         # self.find_element(self.upload_file).click()
         self.find_element(self.save_button).click()
-        print('previous experience mentor edited')
+        print('current experience mentor edited')
 #android.widget.RelativeLayout
 #//*[@class='android.widget.ListView']
 #com.hub.mentifi:id/text_title
     #//*[@class='android.widget.FrameLayout' and ./*[@class='android.widget.ListView']]
+
     def edit_previous_experience_mentor(self, job, employer, start_date, end_date):
         self.find_element(self.more).click()
         self.find_element(self.profile).click()
@@ -397,7 +403,7 @@ class Edit_Profile(Page):
         self.find_element(self.end_date).send_keys(end_date)
         self.driver.hide_keyboard()
         self.find_element(self.save_button).click()
-        print('current experience mentor edited')
+        print('previous experience mentor edited')
 
     def edit_non_work_experience_mentor(self, alias1, alias2):
         self.find_element(self.more).click()
@@ -417,11 +423,11 @@ class Edit_Profile(Page):
         test3[alias1].click()
         test3[alias2].click()
         self.find_element(self.save_button).click()
-        print('current experience mentor edited')
+        print('non work experience mentor edited')
         #[65,1533][387,1574]
         #[65, 1187][246, 1228]
 
-    def edit_mentor_preference(self,area,prefer):
+    def edit_mentor_preference(self,area,prefer,culture):
         self.find_element(self.more).click()
         self.find_element(self.profile).click()
         time.sleep(1)
@@ -441,11 +447,14 @@ class Edit_Profile(Page):
         # test2 = test_parent2.find_elements(By.CLASS_NAME, 'android.widget.RadioButton')
         # test2[prefer].click()
         time.sleep(1)
+        parent2 = self.driver.find_element(By.ID, 'com.hub.mentifi:id/input_availability')
+        t2 = parent2.find_elements(By.CLASS_NAME, 'android.widget.RadioButton')
+        t2[culture].click()
+        time.sleep(1)
         test_parent2 = self.driver.find_element(By.ID, 'com.hub.mentifi:id/input_grade')
         test2 = test_parent2.find_elements(By.CLASS_NAME, 'android.widget.RadioButton')
         test2[prefer].click()
-        time.sleep(1)
         #self.find_element(self.employer).clear()
         self.driver.hide_keyboard()
         self.find_element(self.save_button).click()
-        print('current experience mentee edited')
+        print('mentor preference edited')
